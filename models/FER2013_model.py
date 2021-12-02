@@ -70,7 +70,7 @@ class ResidualUnit(nn.Module):
 
         return out
 
-class CReLU(nn.module):
+class CReLU(nn.Module):
     def __init__(self):
         super(CReLU, self).__init__()
         self.relu = nn.ReLU()

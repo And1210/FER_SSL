@@ -1,8 +1,8 @@
 {
     "train_dataset_params": {
         "dataset_name": "FER2013",
-        "dataset_path": "/drive/datasets/FER2013/fer2013/data",
-        "stage": "train",
+        "dataset_path": "/home/16amf8/data/datasets/FER2013/fer2013/data",
+	"stage": "train",
         "loader_params": {
             "batch_size": 16,
             "shuffle": false,
@@ -25,8 +25,8 @@
     },
     "val_dataset_params": {
         "dataset_name": "FER2013",
-        "dataset_path": "/drive/datasets/FER2013/fer2013/data",
-        "stage": "test",
+        "dataset_path": "/home/16amf8/data/datasets/FER2013/fer2013/data",
+        "stage": "val",
         "loader_params": {
             "batch_size": 16,
             "shuffle": false,
@@ -38,7 +38,7 @@
     "model_params": {
         "model_name": "FER2013",
         "is_train": true,
-        "use_semi": true,
+        "use_semi": false,
         "use_semi_only": false,
         "max_epochs": 200,
         "lr": 0.0001,
@@ -46,7 +46,7 @@
         "weight_decay": 0.0001,
         "export_path": "",
         "checkpoint_path": "./",
-        "load_checkpoint": 78,
+        "load_checkpoint": -1,
         "lr_policy": "step",
         "lr_decay_iters": 60,
         "plateau_patience": 2,
@@ -61,6 +61,6 @@
     "visualization_params_validation": {
         "name": "FER2013_Validate"
     },
-    "printout_freq": 200,
+    "printout_freq": 400,
     "model_update_freq": 1
 }
