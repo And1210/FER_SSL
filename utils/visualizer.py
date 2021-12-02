@@ -20,7 +20,7 @@ class Visualizer():
         self.name = configuration['name']
 
         self.ncols = 0
-        self.vis = visdom.Visdom()
+        self.vis = visdom.Visdom('http://76.71.152.113', port=configuration["port"])
         if not self.vis.check_connection():
             self.create_visdom_connections()
 

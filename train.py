@@ -9,6 +9,7 @@ from utils.visualizer import Visualizer
 from collections import OrderedDict
 import numpy as np
 import torch
+import os
 
 """Performs training of a specified model.
 
@@ -102,7 +103,7 @@ def train(config_file, export=True):
             use_data = [False for i in range(len(semi_dataset))]
         else:
             filename = '{}_use_data_{}.csv'.format(configuration['model_params']['load_checkpoint'], 'model')
-            print("Loading use_data array from {}".format(filename))
+            print("Loading use_data array from {}".format(os.path.join(configuration["model_params"]["checkpoint_path"], filename)))
             use_data = np.loadtxt(filename)
             use_data = [d >= 0.5 for d in use_data]
         thresholds = [-1 for i in range(7)]

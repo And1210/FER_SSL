@@ -1,64 +1,74 @@
+/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/torch/optim/lr_scheduler.py:134: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
 Setting up a new session...
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 175, in _new_conn
-    (self._dns_host, self.port), self.timeout, **extra_kw
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/util/connection.py", line 96, in create_connection
-    raise err
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/util/connection.py", line 86, in create_connection
-    sock.connect(sa)
-ConnectionRefusedError: [Errno 111] Connection refused
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connectionpool.py", line 706, in urlopen
-    chunked=chunked,
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connectionpool.py", line 394, in _make_request
-    conn.request(method, url, **httplib_request_kw)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 239, in request
-    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1281, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1327, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1276, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1036, in _send_output
-    self.send(msg)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 976, in send
-    self.connect()
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 205, in connect
-    conn = self._new_conn()
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 187, in _new_conn
-    self, "Failed to establish a new connection: %s" % e
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fa4fce3df10>: Failed to establish a new connection: [Errno 111] Connection refused
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/adapters.py", line 449, in send
-    timeout=timeout
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connectionpool.py", line 756, in urlopen
-    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/util/retry.py", line 574, in increment
-    raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa4fce3df10>: Failed to establish a new connection: [Errno 111] Connection refused'))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/visdom/__init__.py", line 711, in _send
-    data=json.dumps(msg),
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/visdom/__init__.py", line 677, in _handle_post
-    r = self.session.post(url, data=data)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/sessions.py", line 590, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/sessions.py", line 542, in request
-    resp = self.send(prep, **send_kwargs)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/sessions.py", line 655, in send
-    r = adapter.send(request, **kwargs)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/adapters.py", line 516, in send
-    raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa4fce3df10>: Failed to establish a new connection: [Errno 111] Connection refused'))
-[Errno 111] Connection refused
-slurmstepd-sasquatch: error: *** JOB 6820 ON sasquatch CANCELLED AT 2021-12-01T21:03:21 ***
+Reading config file...
+Initializing dataset...
+dataset [FER2013Dataset] was created
+The number of training samples = 28709
+dataset [RAFDBDataset] was created
+The number of semi-supervised samples = 12271
+dataset [FER2013Dataset] was created
+The number of validation samples = 3589
+Initializing model...
+model [FER2013model] was created
+loading the model from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL/78_net_model.pth
+loading the optimizer from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL/78_optimizer_0.pth
+Networks initialized
+FER2013_Feature_Expansion(
+  (conv1): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (crelu): CReLU(
+    (relu): ReLU()
+  )
+  (conv2): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv3): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (residual_1): ResidualUnit(
+    (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_2): ResidualUnit(
+    (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_3): ResidualUnit(
+    (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=1024, out_features=7, bias=True)
+  (tanh): Tanh()
+  (softmax): Softmax(dim=1)
+)
+[Network model] Total number of parameters : 2.980 M
+Initializing visualization...
