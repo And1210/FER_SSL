@@ -101,13 +101,39 @@ def train(config_file, export=True):
         dataset_ratio = len(semi_dataset)/(len(semi_dataset)+len(train_dataset))
         if (configuration['model_params']['load_checkpoint'] < 0):
             use_data = [False for i in range(len(semi_dataset))]
+            thresholds = [-1 for i in range(7)]
+            labels = semi_dataset.dataset.labels
         else:
             filename = '{}_use_data_{}.csv'.format(configuration['model_params']['load_checkpoint'], 'model')
-            print("Loading use_data array from {}".format(os.path.join(configuration["model_params"]["checkpoint_path"], filename)))
-            use_data = np.loadtxt(filename)
-            use_data = [d >= 0.5 for d in use_data]
-        thresholds = [-1 for i in range(7)]
-        labels = semi_dataset.dataset.labels
+            filename = os.path.join(configuration["model_params"]["checkpoint_path"], filename)
+            print("Loading use_data array from {}".format(filename))
+            try:
+                use_data = np.loadtxt(filename)
+                use_data = [d >= 0.5 for d in use_data]
+            except:
+                print('Failed to load use_data array, initializing to False')
+                use_data = [False for i in range(len(semi_dataset))]
+
+            filename = '{}_labels_{}.csv'.format(configuration['model_params']['load_checkpoint'], 'model')
+            filename = os.path.join(configuration["model_params"]["checkpoint_path"], filename)
+            print("Loading labels array from {}".format(filename))
+            try:
+                labels = np.loadtxt(filename)
+                labels = [round(l) for l in labels]
+            except:
+                print('Failed to load labels array, initializing to dataset labels')
+                labels = semi_dataset.dataset.labels
+
+            filename = '{}_max_confidence_{}.csv'.format(configuration['model_params']['load_checkpoint'], 'model')
+            filename = os.path.join(configuration["model_params"]["checkpoint_path"], filename)
+            print("Loading max_confidence array from {}".format(filename))
+            try:
+                max_confidence = np.loadtxt(filename)
+                thresholds = [2*((c/2+0.5)*configuration["model_params"]["rel_semi_thresh"]-0.5) for c in max_confidence]
+            except:
+                print('Failed to load max_confidence array, intializing thresholds to max')
+                thresholds = [2*((1/2+0.5)*configuration["model_params"]["rel_semi_thresh"]-0.5) for i in range(7)]
+
     for epoch in range(starting_epoch, num_epochs):
         epoch_start_time = time.time()  # timer for entire epoch
         train_dataset.dataset.pre_epoch_callback(epoch)
@@ -278,7 +304,9 @@ def train(config_file, export=True):
         model.save_networks(epoch)
         model.save_optimizers(epoch)
         if (configuration["model_params"]["use_semi"]):
-            np.savetxt('{}_use_data_{}.csv'.format(epoch, 'model'), use_data)
+            np.savetxt(os.path.join(configuration["model_params"]["checkpoint_path"], '{}_use_data_{}.csv'.format(epoch, 'model')), use_data)
+            np.savetxt(os.path.join(configuration["model_params"]["checkpoint_path"], '{}_labels_{}.csv'.format(epoch, 'model')), labels)
+            np.savetxt(os.path.join(configuration["model_params"]["checkpoint_path"], '{}_max_confidence_{}.csv'.format(epoch, 'model')), max_confidence)
 
         print('End of epoch {0} / {1} \t Time Taken: {2} sec'.format(epoch, num_epochs, time.time() - epoch_start_time))
 

@@ -90,3 +90,9 @@ class JAFFEDataset(BaseDataset):
     def __len__(self):
         # return the size of the dataset
         return len(self.labels)
+
+    def get_emotion(self, index):
+        if (index in EMOTION_DICT):
+            return EMOTION_DICT[index]
+        else:
+            return "error"

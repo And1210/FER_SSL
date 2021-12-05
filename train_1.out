@@ -1,0 +1,74 @@
+/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/torch/optim/lr_scheduler.py:134: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
+Setting up a new session...
+Reading config file...
+Initializing dataset...
+dataset [FER2013Dataset] was created
+The number of training samples = 28709
+dataset [FFHQDataset] was created
+The number of semi-supervised samples = 70000
+dataset [FER2013Dataset] was created
+The number of validation samples = 3589
+Initializing model...
+model [FER2013model] was created
+loading the model from /home/16amf8/ELEC872/FER_SSL/trials/FFHQ_SSL/82_net_model.pth
+loading the optimizer from /home/16amf8/ELEC872/FER_SSL/trials/FFHQ_SSL/82_optimizer_0.pth
+Networks initialized
+FER2013_Feature_Expansion(
+  (conv1): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (crelu): CReLU(
+    (relu): ReLU()
+  )
+  (conv2): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv3): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (residual_1): ResidualUnit(
+    (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_2): ResidualUnit(
+    (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_3): ResidualUnit(
+    (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=1024, out_features=7, bias=True)
+  (tanh): Tanh()
+  (softmax): Softmax(dim=1)
+)
+[Network model] Total number of parameters : 2.980 M
+Initializing visualization...

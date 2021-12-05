@@ -1,0 +1,669 @@
+Setting up a new session...
+Reading config file...
+Initializing dataset...
+dataset [RAFDBDataset] was created
+The number of training samples = 12271
+dataset [RAFDBDataset] was created
+The number of validation samples = 3068
+Initializing model...
+model [FER2013model] was created
+Networks initialized
+FER2013_Feature_Expansion(
+  (conv1): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (crelu): CReLU(
+    (relu): ReLU()
+  )
+  (conv2): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv3): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (residual_1): ResidualUnit(
+    (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_2): ResidualUnit(
+    (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_3): ResidualUnit(
+    (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=1024, out_features=7, bias=True)
+  (tanh): Tanh()
+  (softmax): Softmax(dim=1)
+)
+[Network model] Total number of parameters : 2.980 M
+Initializing visualization...
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 0/200, iter: 0/191] total: 2.079208 
+[epoch: 0/200, iter: 25/191] total: 1.812399 
+[epoch: 0/200, iter: 50/191] total: 1.373439 
+[epoch: 0/200, iter: 75/191] total: 1.482076 
+[epoch: 0/200, iter: 100/191] total: 1.596718 
+[epoch: 0/200, iter: 125/191] total: 1.545580 
+[epoch: 0/200, iter: 150/191] total: 2.666409 
+[epoch: 0/200, iter: 175/191] total: 1.047012 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+/home/16amf8/ELEC872/FER_SSL/utils/radam.py:45: UserWarning: This overload of addcmul_ is deprecated:
+	addcmul_(Number value, Tensor tensor1, Tensor tensor2)
+Consider using one of the following signatures instead:
+	addcmul_(Tensor tensor1, Tensor tensor2, *, Number value) (Triggered internally at  /opt/conda/conda-bld/pytorch_1631630836880/work/torch/csrc/utils/python_arg_parser.cpp:1025.)
+  exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+Validation accuracy: 0.222
+Saving model at the end of epoch 0
+End of epoch 0 / 200 	 Time Taken: 65.17035579681396 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 1/200, iter: 0/191] total: 2.450584 
+[epoch: 1/200, iter: 25/191] total: 1.482636 
+[epoch: 1/200, iter: 50/191] total: 1.220435 
+[epoch: 1/200, iter: 75/191] total: 1.421149 
+[epoch: 1/200, iter: 100/191] total: 1.630048 
+[epoch: 1/200, iter: 125/191] total: 1.535471 
+[epoch: 1/200, iter: 150/191] total: 2.728638 
+[epoch: 1/200, iter: 175/191] total: 0.769094 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.222
+Saving model at the end of epoch 1
+End of epoch 1 / 200 	 Time Taken: 61.140586376190186 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 2/200, iter: 0/191] total: 2.530553 
+[epoch: 2/200, iter: 25/191] total: 1.571908 
+[epoch: 2/200, iter: 50/191] total: 1.275038 
+[epoch: 2/200, iter: 75/191] total: 1.500430 
+[epoch: 2/200, iter: 100/191] total: 1.656451 
+[epoch: 2/200, iter: 125/191] total: 1.526624 
+[epoch: 2/200, iter: 150/191] total: 2.758767 
+[epoch: 2/200, iter: 175/191] total: 0.882602 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.222
+Saving model at the end of epoch 2
+End of epoch 2 / 200 	 Time Taken: 61.123700857162476 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 3/200, iter: 0/191] total: 2.515814 
+[epoch: 3/200, iter: 25/191] total: 1.408207 
+[epoch: 3/200, iter: 50/191] total: 1.154235 
+[epoch: 3/200, iter: 75/191] total: 1.399045 
+[epoch: 3/200, iter: 100/191] total: 1.660452 
+[epoch: 3/200, iter: 125/191] total: 1.522898 
+[epoch: 3/200, iter: 150/191] total: 2.718958 
+[epoch: 3/200, iter: 175/191] total: 0.695717 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.222
+Saving model at the end of epoch 3
+End of epoch 3 / 200 	 Time Taken: 61.2493052482605 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 4/200, iter: 0/191] total: 2.557851 
+[epoch: 4/200, iter: 25/191] total: 1.413338 
+[epoch: 4/200, iter: 50/191] total: 1.136478 
+[epoch: 4/200, iter: 75/191] total: 1.458721 
+[epoch: 4/200, iter: 100/191] total: 1.677839 
+[epoch: 4/200, iter: 125/191] total: 1.521121 
+[epoch: 4/200, iter: 150/191] total: 2.699346 
+[epoch: 4/200, iter: 175/191] total: 0.723789 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.222
+Saving model at the end of epoch 4
+End of epoch 4 / 200 	 Time Taken: 61.11996841430664 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 5/200, iter: 0/191] total: 2.554158 
+[epoch: 5/200, iter: 25/191] total: 1.424307 
+[epoch: 5/200, iter: 50/191] total: 1.175969 
+[epoch: 5/200, iter: 75/191] total: 1.426362 
+[epoch: 5/200, iter: 100/191] total: 1.658216 
+[epoch: 5/200, iter: 125/191] total: 1.521286 
+[epoch: 5/200, iter: 150/191] total: 2.721275 
+[epoch: 5/200, iter: 175/191] total: 0.822772 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.222
+Saving model at the end of epoch 5
+End of epoch 5 / 200 	 Time Taken: 61.11823010444641 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 6/200, iter: 0/191] total: 2.542385 
+[epoch: 6/200, iter: 25/191] total: 1.395092 
+[epoch: 6/200, iter: 50/191] total: 1.220057 
+[epoch: 6/200, iter: 75/191] total: 1.435220 
+[epoch: 6/200, iter: 100/191] total: 1.651680 
+[epoch: 6/200, iter: 125/191] total: 1.527563 
+[epoch: 6/200, iter: 150/191] total: 2.656878 
+[epoch: 6/200, iter: 175/191] total: 0.692914 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.223
+Saving model at the end of epoch 6
+End of epoch 6 / 200 	 Time Taken: 61.165563106536865 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 7/200, iter: 0/191] total: 2.503259 
+[epoch: 7/200, iter: 25/191] total: 1.405012 
+[epoch: 7/200, iter: 50/191] total: 1.322605 
+[epoch: 7/200, iter: 75/191] total: 1.461308 
+[epoch: 7/200, iter: 100/191] total: 1.697190 
+[epoch: 7/200, iter: 125/191] total: 1.533524 
+[epoch: 7/200, iter: 150/191] total: 2.654724 
+[epoch: 7/200, iter: 175/191] total: 0.773699 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.223
+Saving model at the end of epoch 7
+End of epoch 7 / 200 	 Time Taken: 61.218480825424194 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 8/200, iter: 0/191] total: 2.491927 
+[epoch: 8/200, iter: 25/191] total: 1.315186 
+[epoch: 8/200, iter: 50/191] total: 1.209732 
+[epoch: 8/200, iter: 75/191] total: 1.502347 
+[epoch: 8/200, iter: 100/191] total: 1.665866 
+[epoch: 8/200, iter: 125/191] total: 1.523847 
+[epoch: 8/200, iter: 150/191] total: 2.721169 
+[epoch: 8/200, iter: 175/191] total: 0.740161 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.223
+Saving model at the end of epoch 8
+End of epoch 8 / 200 	 Time Taken: 61.056201457977295 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 9/200, iter: 0/191] total: 2.489775 
+[epoch: 9/200, iter: 25/191] total: 1.384148 
+[epoch: 9/200, iter: 50/191] total: 1.331462 
+[epoch: 9/200, iter: 75/191] total: 1.526831 
+[epoch: 9/200, iter: 100/191] total: 1.650446 
+[epoch: 9/200, iter: 125/191] total: 1.527269 
+[epoch: 9/200, iter: 150/191] total: 2.756402 
+[epoch: 9/200, iter: 175/191] total: 0.904700 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.227
+Saving model at the end of epoch 9
+End of epoch 9 / 200 	 Time Taken: 61.23649883270264 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 10/200, iter: 0/191] total: 2.409541 
+[epoch: 10/200, iter: 25/191] total: 1.378548 
+[epoch: 10/200, iter: 50/191] total: 1.264725 
+[epoch: 10/200, iter: 75/191] total: 1.434079 
+[epoch: 10/200, iter: 100/191] total: 1.676558 
+[epoch: 10/200, iter: 125/191] total: 1.520811 
+[epoch: 10/200, iter: 150/191] total: 2.711961 
+[epoch: 10/200, iter: 175/191] total: 0.960964 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.227
+Saving model at the end of epoch 10
+End of epoch 10 / 200 	 Time Taken: 61.16535663604736 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 11/200, iter: 0/191] total: 2.324153 
+[epoch: 11/200, iter: 25/191] total: 1.357600 
+[epoch: 11/200, iter: 50/191] total: 1.443570 
+[epoch: 11/200, iter: 75/191] total: 1.457894 
+[epoch: 11/200, iter: 100/191] total: 1.708773 
+[epoch: 11/200, iter: 125/191] total: 1.538618 
+[epoch: 11/200, iter: 150/191] total: 2.635561 
+[epoch: 11/200, iter: 175/191] total: 0.986901 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.227
+Saving model at the end of epoch 11
+End of epoch 11 / 200 	 Time Taken: 61.316774129867554 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 12/200, iter: 0/191] total: 2.070236 
+[epoch: 12/200, iter: 25/191] total: 1.356512 
+[epoch: 12/200, iter: 50/191] total: 1.480990 
+[epoch: 12/200, iter: 75/191] total: 1.716778 
+[epoch: 12/200, iter: 100/191] total: 1.999383 
+[epoch: 12/200, iter: 125/191] total: 1.732234 
+[epoch: 12/200, iter: 150/191] total: 3.273869 
+[epoch: 12/200, iter: 175/191] total: 1.000706 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.269
+Saving model at the end of epoch 12
+End of epoch 12 / 200 	 Time Taken: 61.26044201850891 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 13/200, iter: 0/191] total: 2.011199 
+[epoch: 13/200, iter: 25/191] total: 1.361042 
+[epoch: 13/200, iter: 50/191] total: 1.514032 
+[epoch: 13/200, iter: 75/191] total: 1.991626 
+[epoch: 13/200, iter: 100/191] total: 1.723331 
+[epoch: 13/200, iter: 125/191] total: 1.557606 
+[epoch: 13/200, iter: 150/191] total: 2.722308 
+[epoch: 13/200, iter: 175/191] total: 0.991552 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.228
+Saving model at the end of epoch 13
+End of epoch 13 / 200 	 Time Taken: 61.22533655166626 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 14/200, iter: 0/191] total: 2.011701 
+[epoch: 14/200, iter: 25/191] total: 1.360210 
+[epoch: 14/200, iter: 50/191] total: 1.513475 
+[epoch: 14/200, iter: 75/191] total: 1.882448 
+[epoch: 14/200, iter: 100/191] total: 1.987610 
+[epoch: 14/200, iter: 125/191] total: 1.735755 
+[epoch: 14/200, iter: 150/191] total: 3.307423 
+[epoch: 14/200, iter: 175/191] total: 1.069806 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.344
+Saving model at the end of epoch 14
+End of epoch 14 / 200 	 Time Taken: 61.13084292411804 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 15/200, iter: 0/191] total: 2.009334 
+[epoch: 15/200, iter: 25/191] total: 1.357458 
+[epoch: 15/200, iter: 50/191] total: 1.487134 
+[epoch: 15/200, iter: 75/191] total: 1.510441 
+[epoch: 15/200, iter: 100/191] total: 1.658719 
+[epoch: 15/200, iter: 125/191] total: 1.533186 
+[epoch: 15/200, iter: 150/191] total: 2.682267 
+[epoch: 15/200, iter: 175/191] total: 0.991766 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.224
+Saving model at the end of epoch 15
+End of epoch 15 / 200 	 Time Taken: 61.12582778930664 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 16/200, iter: 0/191] total: 2.008435 
+[epoch: 16/200, iter: 25/191] total: 1.357269 
+[epoch: 16/200, iter: 50/191] total: 1.490630 
+[epoch: 16/200, iter: 75/191] total: 1.710933 
+[epoch: 16/200, iter: 100/191] total: 1.956830 
+[epoch: 16/200, iter: 125/191] total: 1.740211 
+[epoch: 16/200, iter: 150/191] total: 3.274929 
+[epoch: 16/200, iter: 175/191] total: 1.073978 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.338
+Saving model at the end of epoch 16
+End of epoch 16 / 200 	 Time Taken: 61.25164866447449 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 17/200, iter: 0/191] total: 2.011352 
+[epoch: 17/200, iter: 25/191] total: 1.358926 
+[epoch: 17/200, iter: 50/191] total: 1.513328 
+[epoch: 17/200, iter: 75/191] total: 2.037721 
+[epoch: 17/200, iter: 100/191] total: 1.989250 
+[epoch: 17/200, iter: 125/191] total: 2.000703 
+[epoch: 17/200, iter: 150/191] total: 2.560643 
+[epoch: 17/200, iter: 175/191] total: 1.020136 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.227
+Saving model at the end of epoch 17
+End of epoch 17 / 200 	 Time Taken: 61.150763273239136 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 18/200, iter: 0/191] total: 2.003780 
+[epoch: 18/200, iter: 25/191] total: 1.365365 
+[epoch: 18/200, iter: 50/191] total: 1.479482 
+[epoch: 18/200, iter: 75/191] total: 1.684279 
+[epoch: 18/200, iter: 100/191] total: 1.931226 
+[epoch: 18/200, iter: 125/191] total: 1.670025 
+[epoch: 18/200, iter: 150/191] total: 2.472366 
+[epoch: 18/200, iter: 175/191] total: 1.004613 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.227
+Saving model at the end of epoch 18
+End of epoch 18 / 200 	 Time Taken: 61.11065149307251 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 19/200, iter: 0/191] total: 2.015186 
+[epoch: 19/200, iter: 25/191] total: 1.365866 
+[epoch: 19/200, iter: 50/191] total: 1.480709 
+[epoch: 19/200, iter: 75/191] total: 1.695930 
+[epoch: 19/200, iter: 100/191] total: 1.948388 
+[epoch: 19/200, iter: 125/191] total: 1.762262 
+[epoch: 19/200, iter: 150/191] total: 3.209449 
+[epoch: 19/200, iter: 175/191] total: 1.094517 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.287
+Saving model at the end of epoch 19
+End of epoch 19 / 200 	 Time Taken: 61.219192028045654 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 20/200, iter: 0/191] total: 1.990432 
+[epoch: 20/200, iter: 25/191] total: 1.350493 
+[epoch: 20/200, iter: 50/191] total: 1.476075 
+[epoch: 20/200, iter: 75/191] total: 1.715260 
+[epoch: 20/200, iter: 100/191] total: 1.958641 
+[epoch: 20/200, iter: 125/191] total: 1.746830 
+[epoch: 20/200, iter: 150/191] total: 3.154029 
+[epoch: 20/200, iter: 175/191] total: 1.162396 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.255
+Saving model at the end of epoch 20
+End of epoch 20 / 200 	 Time Taken: 61.168259382247925 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 21/200, iter: 0/191] total: 1.933104 
+[epoch: 21/200, iter: 25/191] total: 1.388741 
+[epoch: 21/200, iter: 50/191] total: 1.463913 
+[epoch: 21/200, iter: 75/191] total: 1.682238 
+[epoch: 21/200, iter: 100/191] total: 1.949746 
+[epoch: 21/200, iter: 125/191] total: 1.758531 
+[epoch: 21/200, iter: 150/191] total: 3.191274 
+[epoch: 21/200, iter: 175/191] total: 1.141880 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.321
+Saving model at the end of epoch 21
+End of epoch 21 / 200 	 Time Taken: 61.37043523788452 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 22/200, iter: 0/191] total: 1.952476 
+[epoch: 22/200, iter: 25/191] total: 1.393418 
+[epoch: 22/200, iter: 50/191] total: 1.480911 
+[epoch: 22/200, iter: 75/191] total: 1.691952 
+[epoch: 22/200, iter: 100/191] total: 1.964647 
+[epoch: 22/200, iter: 125/191] total: 1.764614 
+[epoch: 22/200, iter: 150/191] total: 3.298786 
+[epoch: 22/200, iter: 175/191] total: 1.136755 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.298
+Saving model at the end of epoch 22
+End of epoch 22 / 200 	 Time Taken: 61.255215883255005 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 23/200, iter: 0/191] total: 1.951841 
+[epoch: 23/200, iter: 25/191] total: 1.381145 
+[epoch: 23/200, iter: 50/191] total: 1.456745 
+[epoch: 23/200, iter: 75/191] total: 1.654209 
+[epoch: 23/200, iter: 100/191] total: 1.888487 
+[epoch: 23/200, iter: 125/191] total: 1.647645 
+[epoch: 23/200, iter: 150/191] total: 2.712293 
+[epoch: 23/200, iter: 175/191] total: 1.052839 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.357
+Saving model at the end of epoch 23
+End of epoch 23 / 200 	 Time Taken: 61.23953437805176 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 24/200, iter: 0/191] total: 2.007418 
+[epoch: 24/200, iter: 25/191] total: 1.358498 
+[epoch: 24/200, iter: 50/191] total: 1.515592 
+[epoch: 24/200, iter: 75/191] total: 1.849458 
+[epoch: 24/200, iter: 100/191] total: 1.967479 
+[epoch: 24/200, iter: 125/191] total: 1.748779 
+[epoch: 24/200, iter: 150/191] total: 3.017679 
+[epoch: 24/200, iter: 175/191] total: 1.069474 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.281
+Saving model at the end of epoch 24
+End of epoch 24 / 200 	 Time Taken: 61.502296686172485 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 25/200, iter: 0/191] total: 1.993212 
+[epoch: 25/200, iter: 25/191] total: 1.367846 
+[epoch: 25/200, iter: 50/191] total: 1.492070 
+[epoch: 25/200, iter: 75/191] total: 1.681956 
+[epoch: 25/200, iter: 100/191] total: 1.983133 
+[epoch: 25/200, iter: 125/191] total: 1.755923 
+[epoch: 25/200, iter: 150/191] total: 3.249437 
+[epoch: 25/200, iter: 175/191] total: 1.055602 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.264
+Saving model at the end of epoch 25
+End of epoch 25 / 200 	 Time Taken: 61.21152067184448 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 26/200, iter: 0/191] total: 1.993533 
+[epoch: 26/200, iter: 25/191] total: 1.364644 
+[epoch: 26/200, iter: 50/191] total: 1.484257 
+[epoch: 26/200, iter: 75/191] total: 1.700471 
+[epoch: 26/200, iter: 100/191] total: 1.962673 
+[epoch: 26/200, iter: 125/191] total: 1.736380 
+[epoch: 26/200, iter: 150/191] total: 3.069774 
+[epoch: 26/200, iter: 175/191] total: 1.061533 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.256
+Saving model at the end of epoch 26
+End of epoch 26 / 200 	 Time Taken: 61.44537544250488 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 27/200, iter: 0/191] total: 1.990334 
+[epoch: 27/200, iter: 25/191] total: 1.382972 
+[epoch: 27/200, iter: 50/191] total: 1.488881 
+[epoch: 27/200, iter: 75/191] total: 1.634073 
+[epoch: 27/200, iter: 100/191] total: 1.969903 
+[epoch: 27/200, iter: 125/191] total: 1.726823 
+[epoch: 27/200, iter: 150/191] total: 3.243373 
+[epoch: 27/200, iter: 175/191] total: 1.093114 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.257
+Saving model at the end of epoch 27
+End of epoch 27 / 200 	 Time Taken: 61.513976097106934 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 28/200, iter: 0/191] total: 1.979203 
+[epoch: 28/200, iter: 25/191] total: 1.381521 
+[epoch: 28/200, iter: 50/191] total: 1.467317 
+[epoch: 28/200, iter: 75/191] total: 1.705385 
+[epoch: 28/200, iter: 100/191] total: 1.983263 
+[epoch: 28/200, iter: 125/191] total: 1.741067 
+[epoch: 28/200, iter: 150/191] total: 3.218593 
+[epoch: 28/200, iter: 175/191] total: 1.115669 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.328
+Saving model at the end of epoch 28
+End of epoch 28 / 200 	 Time Taken: 61.76213836669922 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 29/200, iter: 0/191] total: 1.978286 
+[epoch: 29/200, iter: 25/191] total: 1.383474 
+[epoch: 29/200, iter: 50/191] total: 1.480698 
+[epoch: 29/200, iter: 75/191] total: 1.719951 
+[epoch: 29/200, iter: 100/191] total: 1.935203 
+[epoch: 29/200, iter: 125/191] total: 1.745587 
+[epoch: 29/200, iter: 150/191] total: 2.782936 
+[epoch: 29/200, iter: 175/191] total: 1.067741 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.272
+Saving model at the end of epoch 29
+End of epoch 29 / 200 	 Time Taken: 61.72814059257507 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 30/200, iter: 0/191] total: 1.965456 
+[epoch: 30/200, iter: 25/191] total: 1.392108 
+[epoch: 30/200, iter: 50/191] total: 1.487314 
+[epoch: 30/200, iter: 75/191] total: 1.657748 
+[epoch: 30/200, iter: 100/191] total: 1.984214 
+[epoch: 30/200, iter: 125/191] total: 1.760632 
+[epoch: 30/200, iter: 150/191] total: 2.838444 
+[epoch: 30/200, iter: 175/191] total: 1.151172 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.269
+Saving model at the end of epoch 30
+End of epoch 30 / 200 	 Time Taken: 61.085747718811035 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 31/200, iter: 0/191] total: 2.033827 
+[epoch: 31/200, iter: 25/191] total: 1.379084 
+[epoch: 31/200, iter: 50/191] total: 1.467548 
+[epoch: 31/200, iter: 75/191] total: 1.639444 
+[epoch: 31/200, iter: 100/191] total: 1.972933 
+[epoch: 31/200, iter: 125/191] total: 1.742671 
+[epoch: 31/200, iter: 150/191] total: 2.946710 
+[epoch: 31/200, iter: 175/191] total: 1.216907 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.315
+Saving model at the end of epoch 31
+End of epoch 31 / 200 	 Time Taken: 61.45177459716797 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 32/200, iter: 0/191] total: 1.926839 
+[epoch: 32/200, iter: 25/191] total: 1.379391 
+[epoch: 32/200, iter: 50/191] total: 1.468960 
+[epoch: 32/200, iter: 75/191] total: 1.678145 
+[epoch: 32/200, iter: 100/191] total: 1.952848 
+[epoch: 32/200, iter: 125/191] total: 1.783764 
+[epoch: 32/200, iter: 150/191] total: 3.083185 
+[epoch: 32/200, iter: 175/191] total: 1.137516 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.263
+Saving model at the end of epoch 32
+End of epoch 32 / 200 	 Time Taken: 61.74331855773926 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 33/200, iter: 0/191] total: 1.899719 
+[epoch: 33/200, iter: 25/191] total: 1.374151 
+[epoch: 33/200, iter: 50/191] total: 1.465754 
+[epoch: 33/200, iter: 75/191] total: 1.668934 
+[epoch: 33/200, iter: 100/191] total: 1.940673 
+[epoch: 33/200, iter: 125/191] total: 1.750640 
+[epoch: 33/200, iter: 150/191] total: 3.139309 
+[epoch: 33/200, iter: 175/191] total: 1.169011 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.335
+Saving model at the end of epoch 33
+End of epoch 33 / 200 	 Time Taken: 61.1909613609314 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 34/200, iter: 0/191] total: 1.875323 
+[epoch: 34/200, iter: 25/191] total: 1.370427 
+[epoch: 34/200, iter: 50/191] total: 1.469265 
+[epoch: 34/200, iter: 75/191] total: 1.664768 
+[epoch: 34/200, iter: 100/191] total: 1.930669 
+[epoch: 34/200, iter: 125/191] total: 1.756294 
+[epoch: 34/200, iter: 150/191] total: 2.987592 
+[epoch: 34/200, iter: 175/191] total: 1.187930 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.307
+Saving model at the end of epoch 34
+End of epoch 34 / 200 	 Time Taken: 61.28831338882446 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 35/200, iter: 0/191] total: 1.926129 
+[epoch: 35/200, iter: 25/191] total: 1.367870 
+[epoch: 35/200, iter: 50/191] total: 1.463422 
+[epoch: 35/200, iter: 75/191] total: 1.656771 
+[epoch: 35/200, iter: 100/191] total: 1.937443 
+[epoch: 35/200, iter: 125/191] total: 1.772017 
+[epoch: 35/200, iter: 150/191] total: 3.051186 
+[epoch: 35/200, iter: 175/191] total: 1.186779 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.343
+Saving model at the end of epoch 35
+End of epoch 35 / 200 	 Time Taken: 61.48709011077881 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 36/200, iter: 0/191] total: 1.842807 
+[epoch: 36/200, iter: 25/191] total: 1.370640 
+[epoch: 36/200, iter: 50/191] total: 1.463952 
+[epoch: 36/200, iter: 75/191] total: 1.663494 
+[epoch: 36/200, iter: 100/191] total: 1.920897 
+[epoch: 36/200, iter: 125/191] total: 1.776451 
+[epoch: 36/200, iter: 150/191] total: 3.047679 
+[epoch: 36/200, iter: 175/191] total: 1.171829 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.364
+Saving model at the end of epoch 36
+End of epoch 36 / 200 	 Time Taken: 61.21403503417969 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 37/200, iter: 0/191] total: 1.875394 
+[epoch: 37/200, iter: 25/191] total: 1.364762 
+[epoch: 37/200, iter: 50/191] total: 1.460960 
+[epoch: 37/200, iter: 75/191] total: 1.653849 
+[epoch: 37/200, iter: 100/191] total: 1.910123 
+[epoch: 37/200, iter: 125/191] total: 1.776459 
+[epoch: 37/200, iter: 150/191] total: 3.050082 
+[epoch: 37/200, iter: 175/191] total: 1.185949 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.386
+Saving model at the end of epoch 37
+End of epoch 37 / 200 	 Time Taken: 61.10269236564636 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 38/200, iter: 0/191] total: 1.849741 
+[epoch: 38/200, iter: 25/191] total: 1.381485 
+[epoch: 38/200, iter: 50/191] total: 1.467670 
+[epoch: 38/200, iter: 75/191] total: 1.707407 
+[epoch: 38/200, iter: 100/191] total: 1.871073 
+[epoch: 38/200, iter: 125/191] total: 1.772226 
+[epoch: 38/200, iter: 150/191] total: 2.857508 
+[epoch: 38/200, iter: 175/191] total: 1.138113 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Validation accuracy: 0.386
+Saving model at the end of epoch 38
+End of epoch 38 / 200 	 Time Taken: 61.20078086853027 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 39/200, iter: 0/191] total: 1.964738 
+[epoch: 39/200, iter: 25/191] total: 1.392878 
+[epoch: 39/200, iter: 50/191] total: 1.502623 
+[epoch: 39/200, iter: 75/191] total: 1.731814 
+[epoch: 39/200, iter: 100/191] total: 1.915123 
+[epoch: 39/200, iter: 125/191] total: 1.758007 
+[epoch: 39/200, iter: 150/191] total: 3.099763 
+[epoch: 39/200, iter: 175/191] total: 1.120022 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
