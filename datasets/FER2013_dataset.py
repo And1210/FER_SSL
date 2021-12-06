@@ -60,7 +60,7 @@ class FER2013Dataset(BaseDataset):
         # image = np.dstack([image] * 3)
 
         # if self._stage == "train":
-        #     image = seg(image=image)
+        image = seg(image=image)
 
         # if self._stage == "test" and self._tta == True:
         #     images = [seg(image=image) for i in range(self._tta_size)]

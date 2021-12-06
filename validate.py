@@ -13,7 +13,7 @@ Input params:
         the system-specific, dataset-specific and
         model-specific settings.
 """
-def validate(config_file):
+def validate(config_file, start_epoch, end_epoch):
     print('Reading config file...')
     configuration = parse_configuration(config_file)
 
@@ -22,25 +22,44 @@ def validate(config_file):
     val_dataset_size = len(val_dataset)
     print('The number of validation samples = {0}'.format(val_dataset_size))
 
-    print('Initializing model...')
-    model = create_model(configuration['model_params'])
-    model.setup()
-    model.eval()
+    if (start_epoch >= 0 and end_epoch >= 0):
+        print('Initializing visualization...')
+        visualizer = Visualizer(configuration['visualization_params_validation'])   # create a visualizer that displays images and plots
+        for epoch in range(start_epoch, end_epoch+1):
+            configuration['model_params']['load_checkpoint'] = epoch
+            model = create_model(configuration['model_params'])
+            model.setup()
+            model.eval()
+    
+            model.pre_epoch_callback(configuration['model_params']['load_checkpoint'])
+    
+            for i, data in enumerate(val_dataset):
+                model.set_input(data)  # unpack data from data loader
+                model.test()           # run inference
 
-    print('Initializing visualization...')
-    visualizer = Visualizer(configuration['visualization_params_validation'])   # create a visualizer that displays images and plots
+            model.post_epoch_callback(configuration['model_params']['load_checkpoint'], visualizer)
+    else:
+        print('Initialzing model...')
+        model = create_model(configuration['model_params'])
+        model.setup()
+        model.eval()
 
-    model.pre_epoch_callback(configuration['model_params']['load_checkpoint'])
+        print('Initializing visualization...')
+        visualizer = Visualizer(configuration['visualization_params_validation'])   # create a visualizer that displays images and plots
 
-    for i, data in enumerate(val_dataset):
-        model.set_input(data)  # unpack data from data loader
-        model.test()           # run inference
+        model.pre_epoch_callback(configuration['model_params']['load_checkpoint'])
 
-    model.post_epoch_callback(configuration['model_params']['load_checkpoint'], visualizer)
+        for i, data in enumerate(val_dataset):
+            model.set_input(data)  # unpack data from data loader
+            model.test()           # run inference
+
+        model.post_epoch_callback(configuration['model_params']['load_checkpoint'], visualizer)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Perform model validation.')
     parser.add_argument('configfile', help='path to the configfile')
+    parser.add_argument('start_epoch', default=-1, help='starting epoch to test')
+    parser.add_argument('end_epoch', default=-1, help='ending epoch to test(inclusive)')
 
     args = parser.parse_args()
-    validate(args.configfile)
+    validate(args.configfile, int(args.start_epoch), int(args.end_epoch))

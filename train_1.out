@@ -5,14 +5,14 @@ Reading config file...
 Initializing dataset...
 dataset [FER2013Dataset] was created
 The number of training samples = 28709
-dataset [FFHQDataset] was created
-The number of semi-supervised samples = 70000
+dataset [RAFDBDataset] was created
+The number of semi-supervised samples = 12271
 dataset [FER2013Dataset] was created
 The number of validation samples = 3589
 Initializing model...
 model [FER2013model] was created
-loading the model from /home/16amf8/ELEC872/FER_SSL/trials/FFHQ_SSL/82_net_model.pth
-loading the optimizer from /home/16amf8/ELEC872/FER_SSL/trials/FFHQ_SSL/82_optimizer_0.pth
+loading the model from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL/78_net_model.pth
+loading the optimizer from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL/78_optimizer_0.pth
 Networks initialized
 FER2013_Feature_Expansion(
   (conv1): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
