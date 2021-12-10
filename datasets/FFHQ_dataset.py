@@ -7,6 +7,7 @@ from torchvision.transforms import transforms
 from torch.utils.data import Dataset
 from datasets.base_dataset import BaseDataset
 from utils.augmenters.augment import seg
+from PIL import Image, ImageOps
 
 
 EMOTION_DICT = {
@@ -20,7 +21,7 @@ EMOTION_DICT = {
 }
 
 
-class FER2013Dataset(BaseDataset):
+class FFHQDataset(BaseDataset):
     """
     Input params:
         stage: The stage of training.
@@ -30,15 +31,17 @@ class FER2013Dataset(BaseDataset):
         super().__init__(configuration)
 
         self._stage = configuration["stage"]
-        self.affine = configuration["affine"]
 
         self._image_size = tuple(configuration["input_size"])
 
-        self._data = pd.read_csv(os.path.join(configuration["dataset_path"], "{}.csv".format(self._stage)))
-        # self._data = self._data[self._data.emotion != 3]
+        self.dataset_path = configuration["dataset_path"]
+        image_names = os.listdir(self.dataset_path)
+        self.images = []
+        for name in image_names:
+            image = Image.open(os.path.join(self.dataset_path, name)).convert('RGBA')
+            self.images.append(ImageOps.grayscale(image))
 
-        self._pixels = self._data["pixels"].tolist()
-        self._emotions = pd.get_dummies(self._data["emotion"])
+        self.labels = [0 for i in range(len(self.images))]
 
         self._transform = transforms.Compose(
             [
@@ -49,9 +52,7 @@ class FER2013Dataset(BaseDataset):
 
 
     def __getitem__(self, index):
-        pixels = self._pixels[index]
-        pixels = list(map(int, pixels.split(" ")))
-        image = np.asarray(pixels).reshape(48, 48)
+        image = np.asarray(self.images[index])
         image = image.astype(np.uint8)
 
         # print(self._image_size)
@@ -61,8 +62,7 @@ class FER2013Dataset(BaseDataset):
         # image = np.dstack([image] * 3)
 
         # if self._stage == "train":
-        if self.affine:
-            image = seg(image=image)
+        #     image = seg(image=image)
 
         # if self._stage == "test" and self._tta == True:
         #     images = [seg(image=image) for i in range(self._tta_size)]
@@ -72,12 +72,12 @@ class FER2013Dataset(BaseDataset):
         #     return images, target
 
         image = self._transform(image)
-        target = self._emotions.iloc[index].idxmax()
+        target = self.labels[index]
         return image, target
 
     def __len__(self):
         # return the size of the dataset
-        return len(self._pixels)
+        return len(self.labels)
 
     def get_emotion(self, index):
         if (index in EMOTION_DICT):

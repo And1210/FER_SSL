@@ -1,64 +1,518 @@
 Setting up a new session...
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 175, in _new_conn
-    (self._dns_host, self.port), self.timeout, **extra_kw
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/util/connection.py", line 96, in create_connection
-    raise err
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/util/connection.py", line 86, in create_connection
-    sock.connect(sa)
-ConnectionRefusedError: [Errno 111] Connection refused
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connectionpool.py", line 706, in urlopen
-    chunked=chunked,
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connectionpool.py", line 394, in _make_request
-    conn.request(method, url, **httplib_request_kw)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 239, in request
-    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1281, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1327, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1276, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 1036, in _send_output
-    self.send(msg)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/http/client.py", line 976, in send
-    self.connect()
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 205, in connect
-    conn = self._new_conn()
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connection.py", line 187, in _new_conn
-    self, "Failed to establish a new connection: %s" % e
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fa4fce3df10>: Failed to establish a new connection: [Errno 111] Connection refused
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/adapters.py", line 449, in send
-    timeout=timeout
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/connectionpool.py", line 756, in urlopen
-    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/urllib3/util/retry.py", line 574, in increment
-    raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa4fce3df10>: Failed to establish a new connection: [Errno 111] Connection refused'))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/visdom/__init__.py", line 711, in _send
-    data=json.dumps(msg),
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/visdom/__init__.py", line 677, in _handle_post
-    r = self.session.post(url, data=data)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/sessions.py", line 590, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/sessions.py", line 542, in request
-    resp = self.send(prep, **send_kwargs)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/sessions.py", line 655, in send
-    r = adapter.send(request, **kwargs)
-  File "/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/requests/adapters.py", line 516, in send
-    raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa4fce3df10>: Failed to establish a new connection: [Errno 111] Connection refused'))
-[Errno 111] Connection refused
-slurmstepd-sasquatch: error: *** JOB 6820 ON sasquatch CANCELLED AT 2021-12-01T21:03:21 ***
+Reading config file...
+Initializing dataset...
+dataset [FER2013Dataset] was created
+The number of training samples = 28709
+dataset [RAFDBDataset] was created
+The number of semi-supervised samples = 12271
+dataset [RAFDBDataset] was created
+The number of validation samples = 3068
+Initializing model...
+model [FER2013model] was created
+loading the model from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL_start_delay/0_net_model.pth
+loading the optimizer from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL_start_delay/0_optimizer_0.pth
+Networks initialized
+FER2013_Feature_Expansion(
+  (conv1): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (crelu): CReLU(
+    (relu): ReLU()
+  )
+  (conv2): Conv2d(64, 64, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv3): Conv2d(128, 128, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+  (bn3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (residual_1): ResidualUnit(
+    (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_2): ResidualUnit(
+    (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (residual_3): ResidualUnit(
+    (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (_downsample): Sequential(
+      (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=1024, out_features=7, bias=True)
+  (tanh): Tanh()
+  (softmax): Softmax(dim=1)
+)
+[Network model] Total number of parameters : 2.980 M
+Initializing visualization...
+Loading use_data array from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL_start_delay/0_use_data_model.csv
+Loading labels array from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL_start_delay/0_labels_model.csv
+Loading max_confidence array from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL_start_delay/0_max_confidence_model.csv
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 1/200, iter: 0/489] total: 1.640443 
+[epoch: 1/200, iter: 25/489] total: 1.712007 
+[epoch: 1/200, iter: 50/489] total: 1.713735 
+[epoch: 1/200, iter: 75/489] total: 1.629313 
+[epoch: 1/200, iter: 100/489] total: 1.683583 
+[epoch: 1/200, iter: 125/489] total: 1.598625 
+[epoch: 1/200, iter: 150/489] total: 1.752466 
+[epoch: 1/200, iter: 175/489] total: 1.655813 
+[epoch: 1/200, iter: 200/489] total: 1.580133 
+[epoch: 1/200, iter: 225/489] total: 1.586765 
+[epoch: 1/200, iter: 250/489] total: 1.583250 
+[epoch: 1/200, iter: 275/489] total: 1.550057 
+[epoch: 1/200, iter: 300/489] total: 1.631256 
+[epoch: 1/200, iter: 325/489] total: 1.587313 
+[epoch: 1/200, iter: 350/489] total: 1.551104 
+[epoch: 1/200, iter: 375/489] total: 1.657671 
+[epoch: 1/200, iter: 400/489] total: 1.709444 
+[epoch: 1/200, iter: 425/489] total: 1.585262 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+/home/16amf8/ELEC872/FER_SSL/utils/radam.py:45: UserWarning: This overload of addcmul_ is deprecated:
+	addcmul_(Number value, Tensor tensor1, Tensor tensor2)
+Consider using one of the following signatures instead:
+	addcmul_(Tensor tensor1, Tensor tensor2, *, Number value) (Triggered internally at  /opt/conda/conda-bld/pytorch_1631630836880/work/torch/csrc/utils/python_arg_parser.cpp:1025.)
+  exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+Validation accuracy: 0.440
+Saving model at the end of epoch 1
+End of epoch 1 / 200 	 Time Taken: 359.43022775650024 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 2/200, iter: 0/489] total: 1.512632 
+[epoch: 2/200, iter: 25/489] total: 1.619099 
+[epoch: 2/200, iter: 50/489] total: 1.576161 
+[epoch: 2/200, iter: 75/489] total: 1.552652 
+[epoch: 2/200, iter: 100/489] total: 1.554672 
+[epoch: 2/200, iter: 125/489] total: 1.496556 
+[epoch: 2/200, iter: 150/489] total: 1.621819 
+[epoch: 2/200, iter: 175/489] total: 1.548514 
+[epoch: 2/200, iter: 200/489] total: 1.510855 
+[epoch: 2/200, iter: 225/489] total: 1.565253 
+[epoch: 2/200, iter: 250/489] total: 1.508313 
+[epoch: 2/200, iter: 275/489] total: 1.376570 
+[epoch: 2/200, iter: 300/489] total: 1.622515 
+[epoch: 2/200, iter: 325/489] total: 1.525955 
+[epoch: 2/200, iter: 350/489] total: 1.445774 
+[epoch: 2/200, iter: 375/489] total: 1.584907 
+[epoch: 2/200, iter: 400/489] total: 1.689981 
+[epoch: 2/200, iter: 425/489] total: 1.570181 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.508
+Saving model at the end of epoch 2
+End of epoch 2 / 200 	 Time Taken: 391.835333108902 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 3/200, iter: 0/489] total: 1.454626 
+[epoch: 3/200, iter: 25/489] total: 1.523996 
+[epoch: 3/200, iter: 50/489] total: 1.611048 
+[epoch: 3/200, iter: 75/489] total: 1.447318 
+[epoch: 3/200, iter: 100/489] total: 1.552396 
+[epoch: 3/200, iter: 125/489] total: 1.378503 
+[epoch: 3/200, iter: 150/489] total: 1.583286 
+[epoch: 3/200, iter: 175/489] total: 1.468872 
+[epoch: 3/200, iter: 200/489] total: 1.394103 
+[epoch: 3/200, iter: 225/489] total: 1.550329 
+[epoch: 3/200, iter: 250/489] total: 1.444735 
+[epoch: 3/200, iter: 275/489] total: 1.395358 
+[epoch: 3/200, iter: 300/489] total: 1.522404 
+[epoch: 3/200, iter: 325/489] total: 1.406065 
+[epoch: 3/200, iter: 350/489] total: 1.405663 
+[epoch: 3/200, iter: 375/489] total: 1.621558 
+[epoch: 3/200, iter: 400/489] total: 1.635537 
+[epoch: 3/200, iter: 425/489] total: 1.498426 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.500
+Saving model at the end of epoch 3
+End of epoch 3 / 200 	 Time Taken: 396.530166387558 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 4/200, iter: 0/489] total: 1.356343 
+[epoch: 4/200, iter: 25/489] total: 1.509716 
+[epoch: 4/200, iter: 50/489] total: 1.531883 
+[epoch: 4/200, iter: 75/489] total: 1.446839 
+[epoch: 4/200, iter: 100/489] total: 1.476725 
+[epoch: 4/200, iter: 125/489] total: 1.372691 
+[epoch: 4/200, iter: 150/489] total: 1.480602 
+[epoch: 4/200, iter: 175/489] total: 1.428990 
+[epoch: 4/200, iter: 200/489] total: 1.424535 
+[epoch: 4/200, iter: 225/489] total: 1.510385 
+[epoch: 4/200, iter: 250/489] total: 1.394222 
+[epoch: 4/200, iter: 275/489] total: 1.381318 
+[epoch: 4/200, iter: 300/489] total: 1.504019 
+[epoch: 4/200, iter: 325/489] total: 1.350449 
+[epoch: 4/200, iter: 350/489] total: 1.387003 
+[epoch: 4/200, iter: 375/489] total: 1.529024 
+[epoch: 4/200, iter: 400/489] total: 1.572105 
+[epoch: 4/200, iter: 425/489] total: 1.429928 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.540
+Saving model at the end of epoch 4
+End of epoch 4 / 200 	 Time Taken: 393.2542769908905 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 5/200, iter: 0/489] total: 1.399171 
+[epoch: 5/200, iter: 25/489] total: 1.525820 
+[epoch: 5/200, iter: 50/489] total: 1.479926 
+[epoch: 5/200, iter: 75/489] total: 1.367879 
+[epoch: 5/200, iter: 100/489] total: 1.436274 
+[epoch: 5/200, iter: 125/489] total: 1.323500 
+[epoch: 5/200, iter: 150/489] total: 1.489485 
+[epoch: 5/200, iter: 175/489] total: 1.411190 
+[epoch: 5/200, iter: 200/489] total: 1.417746 
+[epoch: 5/200, iter: 225/489] total: 1.424255 
+[epoch: 5/200, iter: 250/489] total: 1.370407 
+[epoch: 5/200, iter: 275/489] total: 1.314396 
+[epoch: 5/200, iter: 300/489] total: 1.527566 
+[epoch: 5/200, iter: 325/489] total: 1.336051 
+[epoch: 5/200, iter: 350/489] total: 1.351794 
+[epoch: 5/200, iter: 375/489] total: 1.445578 
+[epoch: 5/200, iter: 400/489] total: 1.556474 
+[epoch: 5/200, iter: 425/489] total: 1.471831 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.537
+Saving model at the end of epoch 5
+End of epoch 5 / 200 	 Time Taken: 395.99790358543396 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 6/200, iter: 0/489] total: 1.390471 
+[epoch: 6/200, iter: 25/489] total: 1.490704 
+[epoch: 6/200, iter: 50/489] total: 1.514503 
+[epoch: 6/200, iter: 75/489] total: 1.359634 
+[epoch: 6/200, iter: 100/489] total: 1.370304 
+[epoch: 6/200, iter: 125/489] total: 1.304049 
+[epoch: 6/200, iter: 150/489] total: 1.439469 
+[epoch: 6/200, iter: 175/489] total: 1.353365 
+[epoch: 6/200, iter: 200/489] total: 1.409479 
+[epoch: 6/200, iter: 225/489] total: 1.396734 
+[epoch: 6/200, iter: 250/489] total: 1.365064 
+[epoch: 6/200, iter: 275/489] total: 1.335042 
+[epoch: 6/200, iter: 300/489] total: 1.513905 
+[epoch: 6/200, iter: 325/489] total: 1.295756 
+[epoch: 6/200, iter: 350/489] total: 1.334734 
+[epoch: 6/200, iter: 375/489] total: 1.493400 
+[epoch: 6/200, iter: 400/489] total: 1.527908 
+[epoch: 6/200, iter: 425/489] total: 1.412001 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.551
+Saving model at the end of epoch 6
+End of epoch 6 / 200 	 Time Taken: 394.7107627391815 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 7/200, iter: 0/489] total: 1.373050 
+[epoch: 7/200, iter: 25/489] total: 1.474997 
+[epoch: 7/200, iter: 50/489] total: 1.516318 
+[epoch: 7/200, iter: 75/489] total: 1.335183 
+[epoch: 7/200, iter: 100/489] total: 1.348871 
+[epoch: 7/200, iter: 125/489] total: 1.279031 
+[epoch: 7/200, iter: 150/489] total: 1.392210 
+[epoch: 7/200, iter: 175/489] total: 1.342735 
+[epoch: 7/200, iter: 200/489] total: 1.354492 
+[epoch: 7/200, iter: 225/489] total: 1.435662 
+[epoch: 7/200, iter: 250/489] total: 1.357929 
+[epoch: 7/200, iter: 275/489] total: 1.299960 
+[epoch: 7/200, iter: 300/489] total: 1.491670 
+[epoch: 7/200, iter: 325/489] total: 1.305059 
+[epoch: 7/200, iter: 350/489] total: 1.331499 
+[epoch: 7/200, iter: 375/489] total: 1.434739 
+[epoch: 7/200, iter: 400/489] total: 1.557628 
+[epoch: 7/200, iter: 425/489] total: 1.448440 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.544
+Saving model at the end of epoch 7
+End of epoch 7 / 200 	 Time Taken: 399.4018204212189 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 8/200, iter: 0/489] total: 1.372227 
+[epoch: 8/200, iter: 25/489] total: 1.404496 
+[epoch: 8/200, iter: 50/489] total: 1.448668 
+[epoch: 8/200, iter: 75/489] total: 1.297444 
+[epoch: 8/200, iter: 100/489] total: 1.375556 
+[epoch: 8/200, iter: 125/489] total: 1.267934 
+[epoch: 8/200, iter: 150/489] total: 1.355896 
+[epoch: 8/200, iter: 175/489] total: 1.320197 
+[epoch: 8/200, iter: 200/489] total: 1.349307 
+[epoch: 8/200, iter: 225/489] total: 1.490718 
+[epoch: 8/200, iter: 250/489] total: 1.327952 
+[epoch: 8/200, iter: 275/489] total: 1.295419 
+[epoch: 8/200, iter: 300/489] total: 1.460816 
+[epoch: 8/200, iter: 325/489] total: 1.285816 
+[epoch: 8/200, iter: 350/489] total: 1.230032 
+[epoch: 8/200, iter: 375/489] total: 1.464516 
+[epoch: 8/200, iter: 400/489] total: 1.425938 
+[epoch: 8/200, iter: 425/489] total: 1.469749 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.551
+Saving model at the end of epoch 8
+End of epoch 8 / 200 	 Time Taken: 396.82098174095154 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 9/200, iter: 0/489] total: 1.350170 
+[epoch: 9/200, iter: 25/489] total: 1.349188 
+[epoch: 9/200, iter: 50/489] total: 1.453056 
+[epoch: 9/200, iter: 75/489] total: 1.284667 
+[epoch: 9/200, iter: 100/489] total: 1.334342 
+[epoch: 9/200, iter: 125/489] total: 1.253112 
+[epoch: 9/200, iter: 150/489] total: 1.374808 
+[epoch: 9/200, iter: 175/489] total: 1.295644 
+[epoch: 9/200, iter: 200/489] total: 1.385525 
+[epoch: 9/200, iter: 225/489] total: 1.399215 
+[epoch: 9/200, iter: 250/489] total: 1.338383 
+[epoch: 9/200, iter: 275/489] total: 1.246336 
+[epoch: 9/200, iter: 300/489] total: 1.477259 
+[epoch: 9/200, iter: 325/489] total: 1.251359 
+[epoch: 9/200, iter: 350/489] total: 1.317248 
+[epoch: 9/200, iter: 375/489] total: 1.414762 
+[epoch: 9/200, iter: 400/489] total: 1.430375 
+[epoch: 9/200, iter: 425/489] total: 1.447778 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.527
+Saving model at the end of epoch 9
+End of epoch 9 / 200 	 Time Taken: 396.7000472545624 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 10/200, iter: 0/489] total: 1.298142 
+[epoch: 10/200, iter: 25/489] total: 1.464438 
+[epoch: 10/200, iter: 50/489] total: 1.455452 
+[epoch: 10/200, iter: 75/489] total: 1.265140 
+[epoch: 10/200, iter: 100/489] total: 1.309581 
+[epoch: 10/200, iter: 125/489] total: 1.247923 
+[epoch: 10/200, iter: 150/489] total: 1.365894 
+[epoch: 10/200, iter: 175/489] total: 1.367820 
+[epoch: 10/200, iter: 200/489] total: 1.287525 
+[epoch: 10/200, iter: 225/489] total: 1.345330 
+[epoch: 10/200, iter: 250/489] total: 1.279321 
+[epoch: 10/200, iter: 275/489] total: 1.219821 
+[epoch: 10/200, iter: 300/489] total: 1.479326 
+[epoch: 10/200, iter: 325/489] total: 1.278239 
+[epoch: 10/200, iter: 350/489] total: 1.208012 
+[epoch: 10/200, iter: 375/489] total: 1.421906 
+[epoch: 10/200, iter: 400/489] total: 1.486638 
+[epoch: 10/200, iter: 425/489] total: 1.394820 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.546
+Saving model at the end of epoch 10
+End of epoch 10 / 200 	 Time Taken: 395.9064314365387 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 11/200, iter: 0/489] total: 1.291912 
+[epoch: 11/200, iter: 25/489] total: 1.452083 
+[epoch: 11/200, iter: 50/489] total: 1.419478 
+[epoch: 11/200, iter: 75/489] total: 1.203159 
+[epoch: 11/200, iter: 100/489] total: 1.302789 
+[epoch: 11/200, iter: 125/489] total: 1.213643 
+[epoch: 11/200, iter: 150/489] total: 1.395380 
+[epoch: 11/200, iter: 175/489] total: 1.327925 
+[epoch: 11/200, iter: 200/489] total: 1.289928 
+[epoch: 11/200, iter: 225/489] total: 1.337154 
+[epoch: 11/200, iter: 250/489] total: 1.279420 
+[epoch: 11/200, iter: 275/489] total: 1.288720 
+[epoch: 11/200, iter: 300/489] total: 1.459159 
+[epoch: 11/200, iter: 325/489] total: 1.248898 
+[epoch: 11/200, iter: 350/489] total: 1.287422 
+[epoch: 11/200, iter: 375/489] total: 1.387421 
+[epoch: 11/200, iter: 400/489] total: 1.389629 
+[epoch: 11/200, iter: 425/489] total: 1.460148 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.555
+Saving model at the end of epoch 11
+End of epoch 11 / 200 	 Time Taken: 395.2852351665497 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 12/200, iter: 0/489] total: 1.251461 
+[epoch: 12/200, iter: 25/489] total: 1.380198 
+[epoch: 12/200, iter: 50/489] total: 1.478609 
+[epoch: 12/200, iter: 75/489] total: 1.218611 
+[epoch: 12/200, iter: 100/489] total: 1.260511 
+[epoch: 12/200, iter: 125/489] total: 1.208776 
+[epoch: 12/200, iter: 150/489] total: 1.344486 
+[epoch: 12/200, iter: 175/489] total: 1.304805 
+[epoch: 12/200, iter: 200/489] total: 1.291149 
+[epoch: 12/200, iter: 225/489] total: 1.331751 
+[epoch: 12/200, iter: 250/489] total: 1.344200 
+[epoch: 12/200, iter: 275/489] total: 1.339916 
+[epoch: 12/200, iter: 300/489] total: 1.415307 
+[epoch: 12/200, iter: 325/489] total: 1.233703 
+[epoch: 12/200, iter: 350/489] total: 1.243969 
+[epoch: 12/200, iter: 375/489] total: 1.355014 
+[epoch: 12/200, iter: 400/489] total: 1.333578 
+[epoch: 12/200, iter: 425/489] total: 1.293807 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.551
+Saving model at the end of epoch 12
+End of epoch 12 / 200 	 Time Taken: 396.94265365600586 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 13/200, iter: 0/489] total: 1.200127 
+[epoch: 13/200, iter: 25/489] total: 1.416174 
+[epoch: 13/200, iter: 50/489] total: 1.409737 
+[epoch: 13/200, iter: 75/489] total: 1.233702 
+[epoch: 13/200, iter: 100/489] total: 1.272286 
+[epoch: 13/200, iter: 125/489] total: 1.183352 
+[epoch: 13/200, iter: 150/489] total: 1.295992 
+[epoch: 13/200, iter: 175/489] total: 1.291813 
+[epoch: 13/200, iter: 200/489] total: 1.356282 
+[epoch: 13/200, iter: 225/489] total: 1.355869 
+[epoch: 13/200, iter: 250/489] total: 1.281297 
+[epoch: 13/200, iter: 275/489] total: 1.199640 
+[epoch: 13/200, iter: 300/489] total: 1.396911 
+[epoch: 13/200, iter: 325/489] total: 1.178483 
+[epoch: 13/200, iter: 350/489] total: 1.244682 
+[epoch: 13/200, iter: 375/489] total: 1.359192 
+[epoch: 13/200, iter: 400/489] total: 1.318182 
+[epoch: 13/200, iter: 425/489] total: 1.345758 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.551
+Saving model at the end of epoch 13
+End of epoch 13 / 200 	 Time Taken: 395.160368680954 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 14/200, iter: 0/489] total: 1.241979 
+[epoch: 14/200, iter: 25/489] total: 1.420446 
+[epoch: 14/200, iter: 50/489] total: 1.470908 
+[epoch: 14/200, iter: 75/489] total: 1.240327 
+[epoch: 14/200, iter: 100/489] total: 1.214838 
+[epoch: 14/200, iter: 125/489] total: 1.153639 
+[epoch: 14/200, iter: 150/489] total: 1.357482 
+[epoch: 14/200, iter: 175/489] total: 1.321172 
+[epoch: 14/200, iter: 200/489] total: 1.235072 
+[epoch: 14/200, iter: 225/489] total: 1.335376 
+[epoch: 14/200, iter: 250/489] total: 1.278464 
+[epoch: 14/200, iter: 275/489] total: 1.211111 
+[epoch: 14/200, iter: 300/489] total: 1.417844 
+[epoch: 14/200, iter: 325/489] total: 1.208416 
+[epoch: 14/200, iter: 350/489] total: 1.146904 
+[epoch: 14/200, iter: 375/489] total: 1.374587 
+[epoch: 14/200, iter: 400/489] total: 1.395421 
+[epoch: 14/200, iter: 425/489] total: 1.408401 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.551
+Saving model at the end of epoch 14
+End of epoch 14 / 200 	 Time Taken: 394.70404601097107 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 15/200, iter: 0/489] total: 1.270087 
+[epoch: 15/200, iter: 25/489] total: 1.338406 
+[epoch: 15/200, iter: 50/489] total: 1.405161 
+[epoch: 15/200, iter: 75/489] total: 1.199703 
+[epoch: 15/200, iter: 100/489] total: 1.306223 
+[epoch: 15/200, iter: 125/489] total: 1.184778 
+[epoch: 15/200, iter: 150/489] total: 1.266288 
+[epoch: 15/200, iter: 175/489] total: 1.233650 
+[epoch: 15/200, iter: 200/489] total: 1.281514 
+[epoch: 15/200, iter: 225/489] total: 1.273514 
+[epoch: 15/200, iter: 250/489] total: 1.255468 
+[epoch: 15/200, iter: 275/489] total: 1.251181 
+[epoch: 15/200, iter: 300/489] total: 1.398339 
+[epoch: 15/200, iter: 325/489] total: 1.202615 
+[epoch: 15/200, iter: 350/489] total: 1.173669 
+[epoch: 15/200, iter: 375/489] total: 1.368574 
+[epoch: 15/200, iter: 400/489] total: 1.314898 
+[epoch: 15/200, iter: 425/489] total: 1.363909 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.557
+Saving model at the end of epoch 15
+End of epoch 15 / 200 	 Time Taken: 394.4101457595825 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 16/200, iter: 0/489] total: 1.241485 
+[epoch: 16/200, iter: 25/489] total: 1.375483 
+[epoch: 16/200, iter: 50/489] total: 1.400315 
+[epoch: 16/200, iter: 75/489] total: 1.194562 
+[epoch: 16/200, iter: 100/489] total: 1.268662 
+[epoch: 16/200, iter: 125/489] total: 1.136489 
+[epoch: 16/200, iter: 150/489] total: 1.304411 
+[epoch: 16/200, iter: 175/489] total: 1.253650 
+[epoch: 16/200, iter: 200/489] total: 1.309002 
+[epoch: 16/200, iter: 225/489] total: 1.297286 
+[epoch: 16/200, iter: 250/489] total: 1.326650 
+[epoch: 16/200, iter: 275/489] total: 1.217441 
+[epoch: 16/200, iter: 300/489] total: 1.427405 
+[epoch: 16/200, iter: 325/489] total: 1.192899 
+[epoch: 16/200, iter: 350/489] total: 1.247018 
+[epoch: 16/200, iter: 375/489] total: 1.312669 
+[epoch: 16/200, iter: 400/489] total: 1.275613 
+[epoch: 16/200, iter: 425/489] total: 1.406004 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%
+Validation accuracy: 0.544
+Saving model at the end of epoch 16
+End of epoch 16 / 200 	 Time Taken: 393.55648398399353 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 17/200, iter: 0/489] total: 1.279804 
+[epoch: 17/200, iter: 25/489] total: 1.375283 
+[epoch: 17/200, iter: 50/489] total: 1.411982 
+[epoch: 17/200, iter: 75/489] total: 1.193026 
+[epoch: 17/200, iter: 100/489] total: 1.229876 
+[epoch: 17/200, iter: 125/489] total: 1.152540 
+[epoch: 17/200, iter: 150/489] total: 1.329982 
+[epoch: 17/200, iter: 175/489] total: 1.205742 
+[epoch: 17/200, iter: 200/489] total: 1.322555 
+[epoch: 17/200, iter: 225/489] total: 1.304360 
+[epoch: 17/200, iter: 250/489] total: 1.315376 
+[epoch: 17/200, iter: 275/489] total: 1.277647 
+[epoch: 17/200, iter: 300/489] total: 1.398221 
+[epoch: 17/200, iter: 325/489] total: 1.168588 
+[epoch: 17/200, iter: 350/489] total: 1.168395 
+[epoch: 17/200, iter: 375/489] total: 1.284489 
+[epoch: 17/200, iter: 400/489] total: 1.339633 
+[epoch: 17/200, iter: 425/489] total: 1.355443 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 21.25%

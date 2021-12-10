@@ -9,16 +9,26 @@ from datasets.base_dataset import BaseDataset
 from utils.augmenters.augment import seg
 from PIL import Image, ImageOps
 
-
 EMOTION_DICT = {
-    0: "angry",
-    1: "disgust",
-    2: "fear",
+    0: "surprise",
+    1: "fear",
+    2: "disgust",
     3: "happy",
     4: "sad",
-    5: "surprise",
+    5: "angry",
     6: "neutral",
 }
+
+BASE_EMOTION_DICT_INVERSE = {
+    "angry": 0,
+    "disgust": 1,
+    "fear": 2,
+    "happy": 3,
+    "sad": 4,
+    "surprise": 5,
+    "neutral": 6,
+}
+
 
 
 class RAFDBDataset(BaseDataset):
@@ -31,6 +41,7 @@ class RAFDBDataset(BaseDataset):
         super().__init__(configuration)
 
         self._stage = configuration["stage"]
+        self.affine = configuration["affine"]
 
         self._image_size = tuple(configuration["input_size"])
 
@@ -46,9 +57,10 @@ class RAFDBDataset(BaseDataset):
                 file, label = d.split(' ')
             except:
                 break
-            image = Image.open(os.path.join(self.dataset_path, 'Image/adapted', file.replace('.jpg', '_adapted.jpg'))).convert('RGBA')
-            self.images.append(ImageOps.grayscale(image))
-            self.labels.append(int(label)-1)
+            if (self._stage in file):
+                image = Image.open(os.path.join(self.dataset_path, 'Image/adapted', file.replace('.jpg', '_adapted.jpg'))).convert('RGBA')
+                self.images.append(ImageOps.grayscale(image))
+                self.labels.append(BASE_EMOTION_DICT_INVERSE[EMOTION_DICT[int(label)-1]])
 
         self._transform = transforms.Compose(
             [
@@ -68,8 +80,8 @@ class RAFDBDataset(BaseDataset):
         image = np.dstack([image] * 1)
         # image = np.dstack([image] * 3)
 
-        # if self._stage == "train":
-        #     image = seg(image=image)
+        if self.affine:
+            image = seg(image=image)
 
         # if self._stage == "test" and self._tta == True:
         #     images = [seg(image=image) for i in range(self._tta_size)]
@@ -85,3 +97,9 @@ class RAFDBDataset(BaseDataset):
     def __len__(self):
         # return the size of the dataset
         return len(self.labels)
+
+    def get_emotion(self, index):
+        if (index in EMOTION_DICT):
+            return EMOTION_DICT[index]
+        else:
+            return "error"
