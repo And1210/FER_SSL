@@ -11,14 +11,23 @@ from PIL import Image, ImageOps
 
 
 EMOTION_DICT = {
-    0: "angry",
-    1: "disgust",
-    2: "fear",
-    3: "happy",
-    4: "sad",
-    5: "surprise",
-    6: "neutral",
+    0: "happy",
+    1: "sad",
+    2: "surprise",
+    3: "angry",
+    4: "disgust",
+    5: "fear"
 }
+BASE_EMOTION_DICT_INVERSE = {
+    "angry": 0,
+    "disgust": 1,
+    "fear": 2,
+    "happy": 3,
+    "sad": 4,
+    "surprise": 5,
+    "neutral": 6,
+}
+
 
 
 class JAFFEDataset(BaseDataset):
@@ -48,7 +57,7 @@ class JAFFEDataset(BaseDataset):
                 label = np.argmax(cur[1:-1]) #will be in range 0-5
 
                 self.images.append(ImageOps.grayscale(image))
-                self.labels.append(int(label))
+                self.labels.append(BASE_EMOTION_DICT_INVERSE[EMOTION_DICT[int(label)]])
 
         self._transform = transforms.Compose(
             [

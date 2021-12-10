@@ -3,6 +3,7 @@
         "dataset_name": "FER2013",
         "dataset_path": "/home/16amf8/data/datasets/FER2013/fer2013/data",
 	"stage": "train",
+	"affine": false,
         "loader_params": {
             "batch_size": 64,
             "shuffle": false,
@@ -11,10 +12,24 @@
         },
         "input_size": [48, 48]
     },
-    "semi_dataset_params": {
+    "alt0_dataset_params": {
         "dataset_name": "RAFDB",
         "dataset_path": "/home/16amf8/data/datasets/RAF-DB",
+        "stage": "test",
+        "affine": false,
+        "loader_params": {
+            "batch_size": 64,
+            "shuffle": false,
+            "num_workers": 1,
+            "pin_memory": true
+        },
+        "input_size": [48, 48]
+    },
+    "alt1_dataset_params": {
+	"dataset_name": "JAFFE",
+        "dataset_path": "/home/16amf8/data/datasets/jaffedbase",
         "stage": "train",
+        "affine": false,
         "loader_params": {
             "batch_size": 64,
             "shuffle": false,
@@ -27,6 +42,7 @@
         "dataset_name": "FER2013",
         "dataset_path": "/home/16amf8/data/datasets/FER2013/fer2013/data",
         "stage": "val",
+        "affine": false,
         "loader_params": {
             "batch_size": 64,
             "shuffle": false,
@@ -35,6 +51,7 @@
         },
         "input_size": [48, 48]
     },
+    "datasets": ["val_dataset_params", "alt0_dataset_params", "alt1_dataset_params"],
     "model_params": {
         "model_name": "FER2013",
         "is_train": true,
@@ -45,8 +62,8 @@
         "momentum": 0.9,
         "weight_decay": 0.0001,
         "export_path": "",
-        "checkpoint_path": "/home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL",
-        "load_checkpoint": -1,
+        "checkpoint_path": "/home/16amf8/ELEC872/FER_SSL/trials/TFD_SSL/JAFFE",
+        "load_checkpoint": 27,
         "lr_policy": "step",
         "lr_decay_iters": 60,
         "plateau_patience": 2,

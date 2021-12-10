@@ -295,6 +295,36 @@ class FER2013model(BaseModel):
         self.val_predictions = []
         self.val_labels = []
 
+        return val_accuracy
+
+    def post_epoch_callback_validate(self, epoch, visualizer):
+        self.val_predictions = torch.cat(self.val_predictions, dim=0)
+        predictions = torch.argmax(self.val_predictions, dim=1)
+        predictions = torch.flatten(predictions).cpu()
+
+        self.val_labels = torch.cat(self.val_labels, dim=0)
+        labels = torch.flatten(self.val_labels).cpu()
+
+        self.val_images = torch.squeeze(torch.cat(self.val_images, dim=0)).cpu()
+
+        # Calculate and show accuracy
+        val_accuracy = accuracy_score(labels, predictions)
+
+        #metrics = OrderedDict()
+        #metrics['{} Accuracy'.format(dataset)] = val_accuracy
+
+        #visualizer.plot_current_validation_metrics(epoch, metrics)
+        print('Validation accuracy: {0:.3f}'.format(val_accuracy))
+
+        # Here you may do something else with the validation data such as
+        # displaying the validation images or calculating the ROC curve
+
+        self.val_images = []
+        self.val_predictions = []
+        self.val_labels = []
+
+        return val_accuracy
+
 def basenet(in_channels=1, num_classes=7):
     return BaseNet(in_channels, num_classes)
 

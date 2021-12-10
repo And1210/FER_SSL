@@ -7,6 +7,7 @@ from torchvision.transforms import transforms
 from torch.utils.data import Dataset
 from datasets.base_dataset import BaseDataset
 from utils.augmenters.augment import seg
+from PIL import Image, ImageOps
 
 
 EMOTION_DICT = {
@@ -20,7 +21,7 @@ EMOTION_DICT = {
 }
 
 
-class FER2013Dataset(BaseDataset):
+class EMOTICDataset(BaseDataset):
     """
     Input params:
         stage: The stage of training.
@@ -34,11 +35,17 @@ class FER2013Dataset(BaseDataset):
 
         self._image_size = tuple(configuration["input_size"])
 
-        self._data = pd.read_csv(os.path.join(configuration["dataset_path"], "{}.csv".format(self._stage)))
-        # self._data = self._data[self._data.emotion != 3]
+        self.dataset_path = configuration["dataset_path"]
+        self.img_dirs = os.listdir(self.dataset_path)
 
-        self._pixels = self._data["pixels"].tolist()
-        self._emotions = pd.get_dummies(self._data["emotion"])
+        self.images = []
+        for d in self.img_dirs:
+            cur_dir = os.path.join(self.dataset_path, d) 
+            for i in os.listdir(cur_dir):
+                img = Image.open(os.path.join(cur_dir, i)).convert('RGBA')
+                img = ImageOps.grayscale(img)
+                self.images.append(img)
+        self.labels = [0 for i in range(len(self.images))]
 
         self._transform = transforms.Compose(
             [
@@ -49,9 +56,7 @@ class FER2013Dataset(BaseDataset):
 
 
     def __getitem__(self, index):
-        pixels = self._pixels[index]
-        pixels = list(map(int, pixels.split(" ")))
-        image = np.asarray(pixels).reshape(48, 48)
+        image = np.asarray(self.images[index])#.reshape(48, 48)
         image = image.astype(np.uint8)
 
         # print(self._image_size)
@@ -64,23 +69,11 @@ class FER2013Dataset(BaseDataset):
         if self.affine:
             image = seg(image=image)
 
-        # if self._stage == "test" and self._tta == True:
-        #     images = [seg(image=image) for i in range(self._tta_size)]
-        #     # images = [image for i in range(self._tta_size)]
-        #     images = list(map(self._transform, images))
-        #     target = self._emotions.iloc[idx].idxmax()
-        #     return images, target
-
         image = self._transform(image)
-        target = self._emotions.iloc[index].idxmax()
+        target = 0
         return image, target
 
     def __len__(self):
         # return the size of the dataset
-        return len(self._pixels)
+        return len(self.images)
 
-    def get_emotion(self, index):
-        if (index in EMOTION_DICT):
-            return EMOTION_DICT[index]
-        else:
-            return "error"

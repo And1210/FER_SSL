@@ -3,6 +3,7 @@
         "dataset_name": "FER2013",
         "dataset_path": "/home/16amf8/data/datasets/FER2013/fer2013/data",
 	"stage": "train",
+	"affine": true,
         "loader_params": {
             "batch_size": 64,
             "shuffle": false,
@@ -15,6 +16,7 @@
         "dataset_name": "RAFDB",
         "dataset_path": "/home/16amf8/data/datasets/RAF-DB",
         "stage": "train",
+	"affine": true,
         "loader_params": {
             "batch_size": 64,
             "shuffle": false,
@@ -24,9 +26,10 @@
         "input_size": [48, 48]
     },
     "val_dataset_params": {
-        "dataset_name": "FER2013",
-        "dataset_path": "/home/16amf8/data/datasets/FER2013/fer2013/data",
-        "stage": "val",
+        "dataset_name": "RAFDB",
+        "dataset_path": "/home/16amf8/data/datasets/RAF-DB",
+        "stage": "test",
+	"affine": false,
         "loader_params": {
             "batch_size": 64,
             "shuffle": false,
@@ -38,19 +41,19 @@
     "model_params": {
         "model_name": "FER2013",
         "is_train": true,
-        "use_semi": false,
-        "use_semi_only": false,
+        "use_semi": true,
+        "use_semi_only": true,
         "max_epochs": 200,
         "lr": 0.0001,
         "momentum": 0.9,
         "weight_decay": 0.0001,
         "export_path": "",
-        "checkpoint_path": "/home/16amf8/ELEC872/FER_SSL/trials/base_affine",
-        "load_checkpoint": 78,
+        "checkpoint_path": "/home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL_start_delay",
+        "load_checkpoint": 0,
         "lr_policy": "step",
-        "lr_decay_iters": 90,
+        "lr_decay_iters": 50,
         "plateau_patience": 2,
-        "start_semi_epoch": 50,
+        "start_semi_epoch": 30,
         "semi_percentage": 0.5,
         "rel_semi_thresh": 0.9999,
         "semi_thresh": 0

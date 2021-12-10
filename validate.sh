@@ -4,4 +4,4 @@
 #SBATCH -n 1
 #SBATCH -o validate.out
 
-python validate.py config_validate.json 78 196
+python validate.py config_validate.json -1 -1

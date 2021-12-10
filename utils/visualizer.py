@@ -232,6 +232,36 @@ class Visualizer():
         except ConnectionError:
             self.create_visdom_connections()
 
+    def plot_current_validation_metrics_multi(self, epoch, metrics):
+        """Display the current validation metrics on visdom display: dictionary of error labels and values.
+
+        Input params:
+            epoch: Current epoch.
+            losses: Validation metrics stored in the format of (name, float) pairs.
+        """
+        if not hasattr(self, 'val_plot_data'):
+            self.val_plot_data = {'X': [], 'Y': [], 'legend': list(metrics.keys())}
+        self.val_plot_data['X'].append(epoch)
+        self.val_plot_data['Y'].append([metrics[k] for k in self.val_plot_data['legend']])
+        #x = np.squeeze(np.stack([np.array(self.val_plot_data['X'])] * len(self.val_plot_data['legend']), 1), axis=1)
+        #y = np.squeeze(np.array(self.val_plot_data['Y']), axis=1)
+        x = np.stack([np.array(self.val_plot_data['X'])] * len(self.val_plot_data['legend']), 1)
+        y = np.array(self.val_plot_data['Y'])
+
+        try:
+            self.vis.line(
+                X=x,
+                Y=y,
+                opts={
+                    'title': self.name + ' over time',
+                    'legend': self.val_plot_data['legend'],
+                    'xlabel': 'epoch',
+                    'ylabel': 'metric'},
+                win=self.display_id+1)
+        except ConnectionError:
+            self.create_visdom_connections()
+
+
 
     def plot_roc_curve(self, fpr, tpr, thresholds):
         """Display the ROC curve.

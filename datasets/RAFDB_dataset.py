@@ -41,6 +41,7 @@ class RAFDBDataset(BaseDataset):
         super().__init__(configuration)
 
         self._stage = configuration["stage"]
+        self.affine = configuration["affine"]
 
         self._image_size = tuple(configuration["input_size"])
 
@@ -79,8 +80,8 @@ class RAFDBDataset(BaseDataset):
         image = np.dstack([image] * 1)
         # image = np.dstack([image] * 3)
 
-        # if self._stage == "train":
-        #     image = seg(image=image)
+        if self.affine:
+            image = seg(image=image)
 
         # if self._stage == "test" and self._tta == True:
         #     images = [seg(image=image) for i in range(self._tta_size)]

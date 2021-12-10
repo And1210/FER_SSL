@@ -1,18 +1,16 @@
-/home/16amf8/anaconda3/envs/FER/lib/python3.7/site-packages/torch/optim/lr_scheduler.py:134: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
-  "https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate", UserWarning)
 Setting up a new session...
 Reading config file...
 Initializing dataset...
 dataset [FER2013Dataset] was created
 The number of training samples = 28709
-dataset [RAFDBDataset] was created
-The number of semi-supervised samples = 12271
-dataset [FER2013Dataset] was created
-The number of validation samples = 3589
+dataset [JAFFEDataset] was created
+The number of semi-supervised samples = 212
+dataset [JAFFEDataset] was created
+The number of validation samples = 212
 Initializing model...
 model [FER2013model] was created
-loading the model from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL/78_net_model.pth
-loading the optimizer from /home/16amf8/ELEC872/FER_SSL/trials/RAF-DB_SSL/78_optimizer_0.pth
+loading the model from /home/16amf8/ELEC872/FER_SSL/trials/JAFFE_SSL_start_delay/0_net_model.pth
+loading the optimizer from /home/16amf8/ELEC872/FER_SSL/trials/JAFFE_SSL_start_delay/0_optimizer_0.pth
 Networks initialized
 FER2013_Feature_Expansion(
   (conv1): Conv2d(1, 32, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
@@ -72,3 +70,423 @@ FER2013_Feature_Expansion(
 )
 [Network model] Total number of parameters : 2.980 M
 Initializing visualization...
+Loading use_data array from /home/16amf8/ELEC872/FER_SSL/trials/JAFFE_SSL_start_delay/0_use_data_model.csv
+Loading labels array from /home/16amf8/ELEC872/FER_SSL/trials/JAFFE_SSL_start_delay/0_labels_model.csv
+Loading max_confidence array from /home/16amf8/ELEC872/FER_SSL/trials/JAFFE_SSL_start_delay/0_max_confidence_model.csv
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 1/200, iter: 0/448] total: 1.634639 
+[epoch: 1/200, iter: 25/448] total: 1.687310 
+[epoch: 1/200, iter: 50/448] total: 1.693989 
+[epoch: 1/200, iter: 75/448] total: 1.616312 
+[epoch: 1/200, iter: 100/448] total: 1.672772 
+[epoch: 1/200, iter: 125/448] total: 1.616165 
+[epoch: 1/200, iter: 150/448] total: 1.706658 
+[epoch: 1/200, iter: 175/448] total: 1.650758 
+[epoch: 1/200, iter: 200/448] total: 1.629109 
+[epoch: 1/200, iter: 225/448] total: 1.621428 
+[epoch: 1/200, iter: 250/448] total: 1.567368 
+[epoch: 1/200, iter: 275/448] total: 1.570229 
+[epoch: 1/200, iter: 300/448] total: 1.623559 
+[epoch: 1/200, iter: 325/448] total: 1.613861 
+[epoch: 1/200, iter: 350/448] total: 1.574934 
+[epoch: 1/200, iter: 375/448] total: 1.683934 
+[epoch: 1/200, iter: 400/448] total: 1.703485 
+[epoch: 1/200, iter: 425/448] total: 1.587498 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+/home/16amf8/ELEC872/FER_SSL/utils/radam.py:45: UserWarning: This overload of addcmul_ is deprecated:
+	addcmul_(Number value, Tensor tensor1, Tensor tensor2)
+Consider using one of the following signatures instead:
+	addcmul_(Tensor tensor1, Tensor tensor2, *, Number value) (Triggered internally at  /opt/conda/conda-bld/pytorch_1631630836880/work/torch/csrc/utils/python_arg_parser.cpp:1025.)
+  exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+Validation accuracy: 0.222
+Saving model at the end of epoch 1
+End of epoch 1 / 200 	 Time Taken: 408.0838031768799 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 2/200, iter: 0/448] total: 1.530293 
+[epoch: 2/200, iter: 25/448] total: 1.628112 
+[epoch: 2/200, iter: 50/448] total: 1.595862 
+[epoch: 2/200, iter: 75/448] total: 1.496076 
+[epoch: 2/200, iter: 100/448] total: 1.576549 
+[epoch: 2/200, iter: 125/448] total: 1.522040 
+[epoch: 2/200, iter: 150/448] total: 1.597202 
+[epoch: 2/200, iter: 175/448] total: 1.539949 
+[epoch: 2/200, iter: 200/448] total: 1.524759 
+[epoch: 2/200, iter: 225/448] total: 1.569648 
+[epoch: 2/200, iter: 250/448] total: 1.509444 
+[epoch: 2/200, iter: 275/448] total: 1.424993 
+[epoch: 2/200, iter: 300/448] total: 1.543220 
+[epoch: 2/200, iter: 325/448] total: 1.502926 
+[epoch: 2/200, iter: 350/448] total: 1.501950 
+[epoch: 2/200, iter: 375/448] total: 1.609970 
+[epoch: 2/200, iter: 400/448] total: 1.574240 
+[epoch: 2/200, iter: 425/448] total: 1.502774 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.226
+Saving model at the end of epoch 2
+End of epoch 2 / 200 	 Time Taken: 400.6207880973816 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 3/200, iter: 0/448] total: 1.422045 
+[epoch: 3/200, iter: 25/448] total: 1.567504 
+[epoch: 3/200, iter: 50/448] total: 1.573334 
+[epoch: 3/200, iter: 75/448] total: 1.497796 
+[epoch: 3/200, iter: 100/448] total: 1.543727 
+[epoch: 3/200, iter: 125/448] total: 1.359972 
+[epoch: 3/200, iter: 150/448] total: 1.540429 
+[epoch: 3/200, iter: 175/448] total: 1.478239 
+[epoch: 3/200, iter: 200/448] total: 1.442998 
+[epoch: 3/200, iter: 225/448] total: 1.527462 
+[epoch: 3/200, iter: 250/448] total: 1.393381 
+[epoch: 3/200, iter: 275/448] total: 1.414133 
+[epoch: 3/200, iter: 300/448] total: 1.549026 
+[epoch: 3/200, iter: 325/448] total: 1.458540 
+[epoch: 3/200, iter: 350/448] total: 1.408786 
+[epoch: 3/200, iter: 375/448] total: 1.504111 
+[epoch: 3/200, iter: 400/448] total: 1.635093 
+[epoch: 3/200, iter: 425/448] total: 1.480793 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.241
+Saving model at the end of epoch 3
+End of epoch 3 / 200 	 Time Taken: 396.7484724521637 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 4/200, iter: 0/448] total: 1.453012 
+[epoch: 4/200, iter: 25/448] total: 1.562270 
+[epoch: 4/200, iter: 50/448] total: 1.557404 
+[epoch: 4/200, iter: 75/448] total: 1.407552 
+[epoch: 4/200, iter: 100/448] total: 1.469618 
+[epoch: 4/200, iter: 125/448] total: 1.373474 
+[epoch: 4/200, iter: 150/448] total: 1.537061 
+[epoch: 4/200, iter: 175/448] total: 1.446767 
+[epoch: 4/200, iter: 200/448] total: 1.372306 
+[epoch: 4/200, iter: 225/448] total: 1.558215 
+[epoch: 4/200, iter: 250/448] total: 1.394480 
+[epoch: 4/200, iter: 275/448] total: 1.356962 
+[epoch: 4/200, iter: 300/448] total: 1.529731 
+[epoch: 4/200, iter: 325/448] total: 1.329023 
+[epoch: 4/200, iter: 350/448] total: 1.370617 
+[epoch: 4/200, iter: 375/448] total: 1.575592 
+[epoch: 4/200, iter: 400/448] total: 1.549198 
+[epoch: 4/200, iter: 425/448] total: 1.471756 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.236
+Saving model at the end of epoch 4
+End of epoch 4 / 200 	 Time Taken: 400.9485740661621 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 5/200, iter: 0/448] total: 1.412328 
+[epoch: 5/200, iter: 25/448] total: 1.526574 
+[epoch: 5/200, iter: 50/448] total: 1.525460 
+[epoch: 5/200, iter: 75/448] total: 1.382112 
+[epoch: 5/200, iter: 100/448] total: 1.423663 
+[epoch: 5/200, iter: 125/448] total: 1.318791 
+[epoch: 5/200, iter: 150/448] total: 1.496045 
+[epoch: 5/200, iter: 175/448] total: 1.364956 
+[epoch: 5/200, iter: 200/448] total: 1.328723 
+[epoch: 5/200, iter: 225/448] total: 1.461559 
+[epoch: 5/200, iter: 250/448] total: 1.340626 
+[epoch: 5/200, iter: 275/448] total: 1.368922 
+[epoch: 5/200, iter: 300/448] total: 1.500037 
+[epoch: 5/200, iter: 325/448] total: 1.331389 
+[epoch: 5/200, iter: 350/448] total: 1.330011 
+[epoch: 5/200, iter: 375/448] total: 1.499159 
+[epoch: 5/200, iter: 400/448] total: 1.505957 
+[epoch: 5/200, iter: 425/448] total: 1.465086 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.292
+Saving model at the end of epoch 5
+End of epoch 5 / 200 	 Time Taken: 400.6869161128998 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 6/200, iter: 0/448] total: 1.359046 
+[epoch: 6/200, iter: 25/448] total: 1.520062 
+[epoch: 6/200, iter: 50/448] total: 1.576600 
+[epoch: 6/200, iter: 75/448] total: 1.364324 
+[epoch: 6/200, iter: 100/448] total: 1.391462 
+[epoch: 6/200, iter: 125/448] total: 1.318304 
+[epoch: 6/200, iter: 150/448] total: 1.418817 
+[epoch: 6/200, iter: 175/448] total: 1.438481 
+[epoch: 6/200, iter: 200/448] total: 1.347036 
+[epoch: 6/200, iter: 225/448] total: 1.507208 
+[epoch: 6/200, iter: 250/448] total: 1.342664 
+[epoch: 6/200, iter: 275/448] total: 1.282893 
+[epoch: 6/200, iter: 300/448] total: 1.479963 
+[epoch: 6/200, iter: 325/448] total: 1.305624 
+[epoch: 6/200, iter: 350/448] total: 1.320254 
+[epoch: 6/200, iter: 375/448] total: 1.531504 
+[epoch: 6/200, iter: 400/448] total: 1.507882 
+[epoch: 6/200, iter: 425/448] total: 1.466635 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.278
+Saving model at the end of epoch 6
+End of epoch 6 / 200 	 Time Taken: 400.956077337265 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 7/200, iter: 0/448] total: 1.378045 
+[epoch: 7/200, iter: 25/448] total: 1.490522 
+[epoch: 7/200, iter: 50/448] total: 1.490487 
+[epoch: 7/200, iter: 75/448] total: 1.263037 
+[epoch: 7/200, iter: 100/448] total: 1.380352 
+[epoch: 7/200, iter: 125/448] total: 1.305987 
+[epoch: 7/200, iter: 150/448] total: 1.370867 
+[epoch: 7/200, iter: 175/448] total: 1.376340 
+[epoch: 7/200, iter: 200/448] total: 1.394769 
+[epoch: 7/200, iter: 225/448] total: 1.421657 
+[epoch: 7/200, iter: 250/448] total: 1.336671 
+[epoch: 7/200, iter: 275/448] total: 1.287388 
+[epoch: 7/200, iter: 300/448] total: 1.473870 
+[epoch: 7/200, iter: 325/448] total: 1.264833 
+[epoch: 7/200, iter: 350/448] total: 1.322793 
+[epoch: 7/200, iter: 375/448] total: 1.453746 
+[epoch: 7/200, iter: 400/448] total: 1.557654 
+[epoch: 7/200, iter: 425/448] total: 1.413504 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.193
+Saving model at the end of epoch 7
+End of epoch 7 / 200 	 Time Taken: 402.58165311813354 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 8/200, iter: 0/448] total: 1.388403 
+[epoch: 8/200, iter: 25/448] total: 1.427542 
+[epoch: 8/200, iter: 50/448] total: 1.430532 
+[epoch: 8/200, iter: 75/448] total: 1.329832 
+[epoch: 8/200, iter: 100/448] total: 1.374809 
+[epoch: 8/200, iter: 125/448] total: 1.215195 
+[epoch: 8/200, iter: 150/448] total: 1.376516 
+[epoch: 8/200, iter: 175/448] total: 1.390361 
+[epoch: 8/200, iter: 200/448] total: 1.277423 
+[epoch: 8/200, iter: 225/448] total: 1.462136 
+[epoch: 8/200, iter: 250/448] total: 1.319372 
+[epoch: 8/200, iter: 275/448] total: 1.210838 
+[epoch: 8/200, iter: 300/448] total: 1.457289 
+[epoch: 8/200, iter: 325/448] total: 1.310175 
+[epoch: 8/200, iter: 350/448] total: 1.295632 
+[epoch: 8/200, iter: 375/448] total: 1.431689 
+[epoch: 8/200, iter: 400/448] total: 1.467221 
+[epoch: 8/200, iter: 425/448] total: 1.492857 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.108
+Saving model at the end of epoch 8
+End of epoch 8 / 200 	 Time Taken: 398.67405223846436 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 9/200, iter: 0/448] total: 1.388351 
+[epoch: 9/200, iter: 25/448] total: 1.482774 
+[epoch: 9/200, iter: 50/448] total: 1.534290 
+[epoch: 9/200, iter: 75/448] total: 1.285672 
+[epoch: 9/200, iter: 100/448] total: 1.321030 
+[epoch: 9/200, iter: 125/448] total: 1.275294 
+[epoch: 9/200, iter: 150/448] total: 1.416724 
+[epoch: 9/200, iter: 175/448] total: 1.274590 
+[epoch: 9/200, iter: 200/448] total: 1.281362 
+[epoch: 9/200, iter: 225/448] total: 1.452815 
+[epoch: 9/200, iter: 250/448] total: 1.325620 
+[epoch: 9/200, iter: 275/448] total: 1.260454 
+[epoch: 9/200, iter: 300/448] total: 1.428587 
+[epoch: 9/200, iter: 325/448] total: 1.179195 
+[epoch: 9/200, iter: 350/448] total: 1.237302 
+[epoch: 9/200, iter: 375/448] total: 1.413843 
+[epoch: 9/200, iter: 400/448] total: 1.454534 
+[epoch: 9/200, iter: 425/448] total: 1.444856 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.212
+Saving model at the end of epoch 9
+End of epoch 9 / 200 	 Time Taken: 397.99788546562195 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 10/200, iter: 0/448] total: 1.308589 
+[epoch: 10/200, iter: 25/448] total: 1.451699 
+[epoch: 10/200, iter: 50/448] total: 1.458024 
+[epoch: 10/200, iter: 75/448] total: 1.269476 
+[epoch: 10/200, iter: 100/448] total: 1.336344 
+[epoch: 10/200, iter: 125/448] total: 1.200116 
+[epoch: 10/200, iter: 150/448] total: 1.343637 
+[epoch: 10/200, iter: 175/448] total: 1.295345 
+[epoch: 10/200, iter: 200/448] total: 1.327146 
+[epoch: 10/200, iter: 225/448] total: 1.269962 
+[epoch: 10/200, iter: 250/448] total: 1.350722 
+[epoch: 10/200, iter: 275/448] total: 1.287622 
+[epoch: 10/200, iter: 300/448] total: 1.450172 
+[epoch: 10/200, iter: 325/448] total: 1.264029 
+[epoch: 10/200, iter: 350/448] total: 1.249303 
+[epoch: 10/200, iter: 375/448] total: 1.426376 
+[epoch: 10/200, iter: 400/448] total: 1.416211 
+[epoch: 10/200, iter: 425/448] total: 1.442394 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.118
+Saving model at the end of epoch 10
+End of epoch 10 / 200 	 Time Taken: 401.00563955307007 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 11/200, iter: 0/448] total: 1.284260 
+[epoch: 11/200, iter: 25/448] total: 1.372372 
+[epoch: 11/200, iter: 50/448] total: 1.452924 
+[epoch: 11/200, iter: 75/448] total: 1.275365 
+[epoch: 11/200, iter: 100/448] total: 1.306798 
+[epoch: 11/200, iter: 125/448] total: 1.283428 
+[epoch: 11/200, iter: 150/448] total: 1.368093 
+[epoch: 11/200, iter: 175/448] total: 1.288696 
+[epoch: 11/200, iter: 200/448] total: 1.285312 
+[epoch: 11/200, iter: 225/448] total: 1.370990 
+[epoch: 11/200, iter: 250/448] total: 1.323767 
+[epoch: 11/200, iter: 275/448] total: 1.293895 
+[epoch: 11/200, iter: 300/448] total: 1.445768 
+[epoch: 11/200, iter: 325/448] total: 1.211113 
+[epoch: 11/200, iter: 350/448] total: 1.222981 
+[epoch: 11/200, iter: 375/448] total: 1.375310 
+[epoch: 11/200, iter: 400/448] total: 1.401994 
+[epoch: 11/200, iter: 425/448] total: 1.356063 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.236
+Saving model at the end of epoch 11
+End of epoch 11 / 200 	 Time Taken: 398.84038519859314 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 12/200, iter: 0/448] total: 1.253795 
+[epoch: 12/200, iter: 25/448] total: 1.449241 
+[epoch: 12/200, iter: 50/448] total: 1.478379 
+[epoch: 12/200, iter: 75/448] total: 1.246846 
+[epoch: 12/200, iter: 100/448] total: 1.361451 
+[epoch: 12/200, iter: 125/448] total: 1.209429 
+[epoch: 12/200, iter: 150/448] total: 1.302966 
+[epoch: 12/200, iter: 175/448] total: 1.290270 
+[epoch: 12/200, iter: 200/448] total: 1.348729 
+[epoch: 12/200, iter: 225/448] total: 1.379672 
+[epoch: 12/200, iter: 250/448] total: 1.308602 
+[epoch: 12/200, iter: 275/448] total: 1.233862 
+[epoch: 12/200, iter: 300/448] total: 1.406493 
+[epoch: 12/200, iter: 325/448] total: 1.244309 
+[epoch: 12/200, iter: 350/448] total: 1.214952 
+[epoch: 12/200, iter: 375/448] total: 1.424987 
+[epoch: 12/200, iter: 400/448] total: 1.426531 
+[epoch: 12/200, iter: 425/448] total: 1.323526 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.179
+Saving model at the end of epoch 12
+End of epoch 12 / 200 	 Time Taken: 401.1959056854248 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 13/200, iter: 0/448] total: 1.268193 
+[epoch: 13/200, iter: 25/448] total: 1.419509 
+[epoch: 13/200, iter: 50/448] total: 1.432936 
+[epoch: 13/200, iter: 75/448] total: 1.225330 
+[epoch: 13/200, iter: 100/448] total: 1.223101 
+[epoch: 13/200, iter: 125/448] total: 1.166735 
+[epoch: 13/200, iter: 150/448] total: 1.297430 
+[epoch: 13/200, iter: 175/448] total: 1.258250 
+[epoch: 13/200, iter: 200/448] total: 1.307179 
+[epoch: 13/200, iter: 225/448] total: 1.351209 
+[epoch: 13/200, iter: 250/448] total: 1.261117 
+[epoch: 13/200, iter: 275/448] total: 1.275322 
+[epoch: 13/200, iter: 300/448] total: 1.385038 
+[epoch: 13/200, iter: 325/448] total: 1.227732 
+[epoch: 13/200, iter: 350/448] total: 1.188778 
+[epoch: 13/200, iter: 375/448] total: 1.394839 
+[epoch: 13/200, iter: 400/448] total: 1.389713 
+[epoch: 13/200, iter: 425/448] total: 1.355172 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.274
+Saving model at the end of epoch 13
+End of epoch 13 / 200 	 Time Taken: 402.60659074783325 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 14/200, iter: 0/448] total: 1.200663 
+[epoch: 14/200, iter: 25/448] total: 1.417203 
+[epoch: 14/200, iter: 50/448] total: 1.428655 
+[epoch: 14/200, iter: 75/448] total: 1.255214 
+[epoch: 14/200, iter: 100/448] total: 1.310087 
+[epoch: 14/200, iter: 125/448] total: 1.206470 
+[epoch: 14/200, iter: 150/448] total: 1.320791 
+[epoch: 14/200, iter: 175/448] total: 1.251674 
+[epoch: 14/200, iter: 200/448] total: 1.309123 
+[epoch: 14/200, iter: 225/448] total: 1.421724 
+[epoch: 14/200, iter: 250/448] total: 1.340387 
+[epoch: 14/200, iter: 275/448] total: 1.241204 
+[epoch: 14/200, iter: 300/448] total: 1.363388 
+[epoch: 14/200, iter: 325/448] total: 1.247790 
+[epoch: 14/200, iter: 350/448] total: 1.200448 
+[epoch: 14/200, iter: 375/448] total: 1.342161 
+[epoch: 14/200, iter: 400/448] total: 1.381456 
+[epoch: 14/200, iter: 425/448] total: 1.392482 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.292
+Saving model at the end of epoch 14
+End of epoch 14 / 200 	 Time Taken: 400.56197237968445 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 15/200, iter: 0/448] total: 1.226542 
+[epoch: 15/200, iter: 25/448] total: 1.412918 
+[epoch: 15/200, iter: 50/448] total: 1.488963 
+[epoch: 15/200, iter: 75/448] total: 1.188515 
+[epoch: 15/200, iter: 100/448] total: 1.259275 
+[epoch: 15/200, iter: 125/448] total: 1.168926 
+[epoch: 15/200, iter: 150/448] total: 1.299080 
+[epoch: 15/200, iter: 175/448] total: 1.283821 
+[epoch: 15/200, iter: 200/448] total: 1.254584 
+[epoch: 15/200, iter: 225/448] total: 1.356561 
+[epoch: 15/200, iter: 250/448] total: 1.305451 
+[epoch: 15/200, iter: 275/448] total: 1.206783 
+[epoch: 15/200, iter: 300/448] total: 1.427695 
+[epoch: 15/200, iter: 325/448] total: 1.219438 
+[epoch: 15/200, iter: 350/448] total: 1.237535 
+[epoch: 15/200, iter: 375/448] total: 1.404321 
+[epoch: 15/200, iter: 400/448] total: 1.340136 
+[epoch: 15/200, iter: 425/448] total: 1.426129 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
+Validation accuracy: 0.321
+Saving model at the end of epoch 15
+End of epoch 15 / 200 	 Time Taken: 401.23887825012207 sec
+learning rate = 0.0001000
+[-1, -1, -1, -1, -1, -1, -1]
+[-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+[epoch: 16/200, iter: 0/448] total: 1.233037 
+[epoch: 16/200, iter: 25/448] total: 1.376248 
+[epoch: 16/200, iter: 50/448] total: 1.377598 
+[epoch: 16/200, iter: 75/448] total: 1.235892 
+[epoch: 16/200, iter: 100/448] total: 1.254735 
+[epoch: 16/200, iter: 125/448] total: 1.175860 
+[epoch: 16/200, iter: 150/448] total: 1.362335 
+[epoch: 16/200, iter: 175/448] total: 1.257618 
+[epoch: 16/200, iter: 200/448] total: 1.275618 
+[epoch: 16/200, iter: 225/448] total: 1.345785 
+[epoch: 16/200, iter: 250/448] total: 1.287187 
+[epoch: 16/200, iter: 275/448] total: 1.164078 
+[epoch: 16/200, iter: 300/448] total: 1.376168 
+[epoch: 16/200, iter: 325/448] total: 1.256839 
+[epoch: 16/200, iter: 350/448] total: 1.175341 
+[epoch: 16/200, iter: 375/448] total: 1.285127 
+[epoch: 16/200, iter: 400/448] total: 1.279701 
+[epoch: 16/200, iter: 425/448] total: 1.316623 
+Max Confidence from Epoch [-1, -1, -1, -1, -1, -1, -1]
+Percentage of used data: 7.08%
